@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniSites</title>
+  <link rel="icon" href="./images/logo/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="./styles/base.css">
+  <link rel="stylesheet" href="./styles/notFound.css">
+  <link rel="stylesheet" href="./styles/header.css">
+  <link rel="stylesheet" href="./styles/footer.css">
+  <link rel="stylesheet" href="./styles/home.css">
+  <link rel="stylesheet" href="./styles/cards.css">
+</head>
+<body>
+  <header class="site-header">
+      <a class="brand" href="#/">
+        <img src="./images/logo/UniSites-Lanscape.png" alt="Logo">
+      </a>
+      <div class="nav-container">
+        <nav class="fixed-nav">
+          <a href="#/" id="home">Home</a>
+          <a href="#/universities" id="universities">Universities</a>
+          <a href="#/majors" id="majors">Majors</a>
+          <a href="#/scholarships" id="scholarships">Scholarships</a>
+          <a href="#/forum" id="forum">Forum</a>
+          <a href="#/about" id="about">About</a>
+          <button class="search-btn"><img src="./images/icon/search-interface-symbol.png" alt=""></button>
+        </nav>
+        <nav class="dynamic-nav">
+          <ul>
+            <li><a href="#/" id="home">Home</a></li>
+            <li><a href="#/universities" id="universities">Universities</a></li>
+            <li><a href="#/majors" id="majors">Majors</a></li>
+            <li><a href="#/scholarships" id="scholarships">Scholarships</a></li>
+            <li><a href="#/forum" id="forum">Forum</a></li>
+            <li><a href="#/about" id="about">About</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="nav-btn">
+        <button class="search-btn"><img src="./images/icon/search-interface-symbol.png" alt=""></button>
+        <button id="menu-btn"><img src="./images/icon/menu.png" alt=""></button>
+      </div>
+  </header>
+
+  <main id="app" class="container"></main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>UniSites</h3>
+        <p>UniSites is a platform dedicated to helping students find the best universities, majors, and scholarships in Cambodia. We also provide a forum for students to connect and share their experiences.</p>
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:unisites@aupp.edu.kh">unisites@aupp.edu.kh</a></p>
+        <p>Phone: <a href="tel:+85512345678">+855 12 345 678</a></p>
+        <p>Address: <a href="https://maps.app.goo.gl/UACZ9YS73veDDU339" target="_blank">Kilometer 6, 278H, Street 201R, Kroalkor Village, Unnamed Road, Phnom Penh</a></p>
+      </div>
+      <div class="footer-section">
+          <h3>Policies</h3>
+          <ul>
+            <li><a href="#/">Privacy Policy</a></li>
+            <li><a href="#/">Terms & Conditions</a></li>
+            <li><a href="#/">Cookie Policy</a></li>
+            <li><a href="#/">Disclaimer</a></li>
+            <li><a href="#/">FAQs</a></li>
+            <li><a href="#/">Copyright Notice</a></li>
+          </ul>
+      </div>
+      <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#/">Home</a></li>
+            <li><a href="#/universities">Universities</a></li>
+            <li><a href="#/majors">Majors</a></li>
+            <li><a href="#/scholarships">Scholarships</a></li>
+            <li><a href="#/forum">Forum</a></li>
+            <li><a href="#/about">About</a></li>
+          </ul>
+      </div>
+      <div class="footer-section social-media">
+        <h3>Follow Us</h3>
+        <p>
+          <a href="#/"><img src="./images/icon/facebook.png" alt=""></a>
+          <a href="#/"><img src="./images/icon/instagram.png" alt=""></a>
+          <a href="#/"><img src="./images/icon/telegram.png" alt=""></a>
+          <a href="#/"><img src="./images/icon/twitter.png" alt=""></a>
+          <a href="#/"><img src="./images/icon/linkedin.png" alt=""></a>
+        </p>
+        <h3>Our partners</h3>
+        <p>
+          <a href="#/"><img src="./images/icon/AUPP_Logo.png" alt="AUPP" title="AUPP"></a>
+          <a href="#/"><img src="./images/icon/Institute_of_Technology_of_Cambodia_logo.png" alt="ITC" title="ITC"></a>
+          <a href="#/"><img src="./images/icon/RUPP_logo.png" alt="PD" title="PD"></a>
+          <a href="#/"><img src="./images/icon/images.png" alt="BuildBright" title="BuildBright"></a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <p>© <strong><span id="year"></span></strong> UniSites. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="./scripts/app.js"></script>
+</body>
+</html>
