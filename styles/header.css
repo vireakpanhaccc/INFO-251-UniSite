@@ -1,0 +1,91 @@
+
+
+.site-header {
+  background-color: #ffffff;
+  font-size: large;
+  border-bottom: 1px solid #ddd;
+  padding: 0px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.site-header .brand img{
+  height: 60px;
+  width: auto;
+}
+
+.site-header .brand img:active {
+  filter: brightness(0.8);
+  scale: 0.9;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+}
+
+.site-header nav a {
+  margin: 0 20px 0 0;
+  color: #2c3e50ec;
+}
+
+.site-header nav a.active {
+  color: #e67300;
+  font-weight: bold;
+}
+
+.site-header .nav-btn{
+  display: none;
+}
+.site-header button{
+  background-color: transparent;
+  padding:0;
+  margin-right: 5px;
+  height: 20px;
+  width: 20px;
+}
+.site-header button img{
+  height: 20px;
+  width: auto;
+  filter: brightness(0.6);
+}
+
+.site-header .dynamic-nav{
+  display: none;
+  padding: 10px 10%;
+  position: fixed;
+  top: 65px;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.site-header .dynamic-nav ul{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+}
+.site-header .dynamic-nav ul li{
+  flex: 1;
+  min-width: 200px;
+  margin:0;
+}
+
+
+@media (max-width: 900px) {
+  .site-header .fixed-nav{
+    display: none;
+  }
+  .site-header .nav-btn{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
