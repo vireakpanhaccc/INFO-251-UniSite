@@ -1,116 +1,67 @@
-import {popularUniversities} from '../data/popularUniversities.js';
-import { popularMajors } from '../data/popularMajors.js';
-import { popularScholarships } from '../data/popularScholarships.js';
+import universityCards from "../components/universityCards.js";
+import majorCards from "../components/majorCards.js";
+import scholarshipCards from "../components/scholarshipCards.js";
+import { popUniData } from "../data/popUniData.js";
+import { popMajorData } from "../data/popMajorData.js";
+import { popScholarData } from "../data/popScholarData.js";
 
-export const universityCards = (universities) => {
-  return universities.map(uni =>`
-    <div class="card">
-      <div class="card-image">
-        <img class="card-cover" src="${uni.cover_image}" alt="${uni.name} Campus">
-        <img class="card-logo" src="${uni.logo}" alt="${uni.name} Logo">
-      </div>
-      <div class="card-content">
-        <h3>${uni.name}</h3>
-        <p><strong>Location:</strong> ${uni.location}</p>
-        <p><strong>Established:</strong> ${uni.established}</p>
-        <p><strong>Ranking:</strong> ${'⭐'.repeat(uni.ranking)}</p>
-        <a href="${uni.website}" target="_blank">Visit Website</a>
-      </div>
-    </div>
-  `).join('');
-}
-
-const majorCards = (majors) => {
-  return majors.map(major =>`
-    <div class="card">
-      <div class="card-image">
-        <img class="card-cover" src="${major.cover_image}" alt="${major.name}">
-      </div>
-      <div class="card-content">
-        <h3>${major.name}</h3>
-        <p>${major.description}</p>
-        <p><strong>Popular Courses:</strong> ${major.popular_courses.join(', ')}</p>
-        <a href="#/" target="_blank">Visit Website</a>
-      </div>
-    </div>
-  `).join('');
-}
-
-const scholarshipCards = (scholarships) => {
-  return scholarships.map(scholarship =>`
-    <div class="card">
-      <div class="card-image">
-        <img class="card-cover" src="${scholarship.cover_image}" alt="${scholarship.name}">
-      </div>
-      <div class="card-content">
-        <h3>${scholarship.name}</h3>
-        <p><strong>Provider:</strong> ${scholarship.provider}</p>
-        <p><strong>Amount:</strong> ${scholarship.amount}</p>
-        <p><strong>Deadline:</strong> ${scholarship.deadline}</p>
-        <a href="#/" target="_blank">Visit Website</a>
-      </div>
-    </div>
-  `).join('');
-}
-
-export default function Home(){
-  const popularUniversitiesCards = popularUniversities.length ? universityCards(popularUniversities) : '<p>No popular universities available.</p>';
-  const popularMajorsCards = popularMajors.length ? majorCards(popularMajors) : '<p>No popular majors available.</p>';
-  const popularScholarshipsCards = popularScholarships.length ? scholarshipCards(popularScholarships) : '<p>No popular scholarships available.</p>';
-  const el = document.createElement('div');
+export default function Home() {
+  const el = document.createElement("div");
   el.innerHTML = `
-    <div class="home-image-container">
-      <img src='./images/pic/universities/cover/Students-Life.jpg'></img>
+    <div class="home-cover">
+      <img class="min-h-[300px] max-h-[500px] w-full object-cover" src='./images/pic/universities/cover/Students-Life.jpg'></img>
     </div>
-    <div class="home-content">
-      <div class="home-title text-center">
-        <h1>Discover Your Future with UniSites</h1>
-        <p>Explore universities, majors, scholarships, and connect with peers.</p>  
+
+    <div class="home-content flex flex-col gap-5 py-5 px-[5%]">
+      <div class="w-full text-center">
+        <h1 class="text-[#2c3e50ec] font-bold text-2xl md:text-4xl mt-4">Discover Your Future with UniSites</h1>
+        <p class="mb-6 mt-3">Explore universities, majors, scholarships, and connect with peers.</p>  
       </div>
-      <div class="home-search-bar">
-        <input type="text" placeholder="Search for universities, majors, scholarships...">
-        <button>Search</button>
+      <div class="home-search-barw-full flex justify-center mb-6 h-10 text-sm md:text-md">
+        <input class="flex-1 max-w-2xl h-10 border border-gray-400 rounded-l-3xl pl-4" type="text" placeholder="Search for universities, majors, scholarships...">
+        <button class=" bg-[#2c3e50ec] border border-[#2c3e50ec] text-white px-4 md:px-8 rounded-r-3xl hover:bg-[#2c3e50] active:brightness-80">Search</button>
       </div>
-      <div class="home-popular-universities">
-        <div class="title-with-hr">
-          <h2>Popular Universities</h2>
-          <hr>
-          <a href="#/universities"><button>View All</button></a>
+      <div class="home-popular-universities ">
+        <div class="title-with-hr flex items-center gap-3 mb-6">
+          <h1 class="text-2xl font-bold text-[#2c3e50ec]">Popular Universities</h1>
+          <hr class="flex-1 border-0 bg-[#2c3e50ec] h-1 rounded-sm">
+          <a href="#/universities"><button class="text-sm md:text-md h-full">View All</button></a>
         </div>
-        <div class="university-cards card-container">
-          ${popularUniversitiesCards}
+        <div class="card-container grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 mb-10">
+          ${universityCards(popUniData)}
         </div>
       </div>
       <div class="home-popular-majors">
-        <div class="title-with-hr">
-          <h2>Popular Majors</h2>
-          <hr>
-          <a href="#/majors"><button>View All</button></a>
+        <div class="title-with-hr flex items-center gap-3 mb-6">
+          <h1 class="text-2xl font-bold text-[#2c3e50ec]">Popular Majors</h1>
+          <hr class="flex-1 border-0 bg-[#2c3e50ec] h-1 rounded-sm">
+          <a href="#/majors"><button class="text-sm md:text-md h-full">View All</button></a>
         </div>
-        <div class="major-cards card-container">
-          ${popularMajorsCards}
+        <div class="card-container grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 mb-10">
+          ${majorCards(popMajorData)}
         </div>
       </div>
       <div class="home-popular-scholarships">
-        <div class="title-with-hr">
-          <h2>Popular Scholarships</h2>
-          <hr>
-          <a href="#/scholarships"><button>View All</button></a>
+        <div class="title-with-hr flex items-center gap-3 mb-6">
+          <h1 class="text-2xl font-bold text-[#2c3e50ec]">Popular Scholarships</h1>
+          <hr class="flex-1 border-0 bg-[#2c3e50ec] h-1 rounded-sm">
+          <a href="#/scholarships"><button class="text-sm md:text-md h-full">View All</button></a>
         </div>
-          <div class="major-cards card-container">
-          ${popularScholarshipsCards}
+        <div class="card-container grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 mb-10">
+          ${scholarshipCards(popScholarData)}
           </div>
       </div>
       <div class="home-community text-center">
-        <div class="title-with-hr">
-          <hr>
-          <h2>Join Our Community</h2>
-          <hr>
+        <div class="title-with-hr flex items-center gap-3 mb-6">
+          <hr class="flex-1 border-0 bg-[#2c3e50ec] h-1 rounded-sm">
+          <h2 class="text-2xl font-bold text-[#2c3e50ec]">Join Our Community</h2>
+          <hr class="flex-1 border-0 bg-[#2c3e50ec] h-1 rounded-sm">
         </div>
         <p>Connect with students and alumni in our forum.</p>
-        <a href="#/forum"><button>Visit Forum</button></a>
+        <a href="#/forum"><button class="m-20 py-5 px-14 text-xl rounded-4xl bg-[#2c3e50ec] text-white hover:bg-[#2c3e50] active:brightness-80">Visit Forum</button></a>
       </div>
     </div>
+
   `;
   return el;
 }

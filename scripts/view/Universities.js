@@ -1,11 +1,10 @@
-import { locations, majors } from "../data/universitiesFilter.js";
-import { universities } from "../data/universities.js";
-import { universityCards } from "./Home.js";
+import { locations, majors } from "../data/filterData.js";
+import {uniData} from "../data/uniData.js";
+import universityCards from "../components/universityCards.js";
 
-
-export default function Universities(){
-  const universityGrid = universityCards(universities);
-  const el = document.createElement('div');
+export default function Universities() {
+  const universityGrid = universityCards(uniData);
+  const el = document.createElement("div");
   el.innerHTML = `
     <div class="universities-container">
     <div class="filter-bar">
@@ -14,14 +13,20 @@ export default function Universities(){
         <label for="locationSelect">Location:</label>
         <select>
           <option value="">All Locations</option>
-          ${locations.map(location => `<option value="${location}">${location}</option>`).join('')}
+          ${locations
+            .map(
+              (location) => `<option value="${location}">${location}</option>`
+            )
+            .join("")}
         </select>
       </div>
       <div class="major-filter">
         <label for="majorSelect">Major:</label>
         <select>
           <option value="">All Majors</option>
-          ${majors.map(major => `<option value="${major}">${major}</option>`).join('')}
+          ${majors
+            .map((major) => `<option value="${major}">${major}</option>`)
+            .join("")}
         </select>
       </div>
       <div class="price-range">
@@ -49,46 +54,74 @@ export default function Universities(){
     </div>
   `;
 
-    // Update label when range changes
-  const maxPriceInput = el.querySelector('#maxPrice');
-  const maxPriceLabel = el.querySelector('#maxPriceLabel');
-  const minPriceInput = el.querySelector('#minPrice');
-  const minPriceLabel = el.querySelector('#minPriceLabel');
-  maxPriceInput.addEventListener('input', () => {
+  // Update label when range changes
+  const maxPriceInput = el.querySelector("#maxPrice");
+  const maxPriceLabel = el.querySelector("#maxPriceLabel");
+  const minPriceInput = el.querySelector("#minPrice");
+  const minPriceLabel = el.querySelector("#minPriceLabel");
+  maxPriceInput.addEventListener("input", () => {
     maxPriceLabel.textContent = maxPriceInput.value;
   });
-  minPriceInput.addEventListener('input', () => {
+  minPriceInput.addEventListener("input", () => {
     minPriceLabel.textContent = minPriceInput.value;
   });
 
   return el;
 }
 
-function filterUniversities(universities, searchTerm, location, major, minPrice, maxPrice, scholarship) {
-  return universities.filter(university => {
-    const matchesSearch = university.name.toLowerCase().includes(searchTerm.toLowerCase());
+function filterUniversities(
+  universities,
+  searchTerm,
+  location,
+  major,
+  minPrice,
+  maxPrice,
+  scholarship
+) {
+  return universities.filter((university) => {
+    const matchesSearch = university.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
     const matchesLocation = location ? university.location === location : true;
     const matchesMajor = major ? university.majors.includes(major) : true;
-    const matchesPrice = (university.priceRange.min >= minPrice) && (university.priceRange.min <= maxPrice);
-    const matchesScholarship = scholarship ? university.scholarships && university.scholarships.length > 0 : true;
-    return matchesSearch && matchesLocation && matchesMajor && matchesPrice && matchesScholarship;
+    const matchesPrice =
+      university.priceRange.min >= minPrice &&
+      university.priceRange.min <= maxPrice;
+    const matchesScholarship = scholarship
+      ? university.scholarships && university.scholarships.length > 0
+      : true;
+    return (
+      matchesSearch &&
+      matchesLocation &&
+      matchesMajor &&
+      matchesPrice &&
+      matchesScholarship
+    );
   });
 }
 
 function updateUniversityGrid(universities) {
-  const universityGrid = document.querySelector('.university-grid');
+  const universityGrid = document.querySelector(".university-grid");
   universityGrid.innerHTML = universityCards(universities);
 }
 
 // Event listeners for filters
-document.addEventListener('input', () => {
-  const searchTerm = document.querySelector('#searchUni').value;
-  const location = document.querySelector('.location-filter select').value;
-  const major = document.querySelector('.major-filter select').value;
-  const minPrice = parseInt(document.querySelector('#minPrice').value, 10);
-  const maxPrice = parseInt(document.querySelector('#maxPrice').value, 10);
-  const scholarship = document.querySelector('#scholarshipOnly').checked;
+document.addEventListener("input", () => {
+  const searchTerm = document.querySelector("#searchUni").value;
+  const location = document.querySelector(".location-filter select").value;
+  const major = document.querySelector(".major-filter select").value;
+  const minPrice = parseInt(document.querySelector("#minPrice").value, 10);
+  const maxPrice = parseInt(document.querySelector("#maxPrice").value, 10);
+  const scholarship = document.querySelector("#scholarshipOnly").checked;
 
-  const filteredUniversities = filterUniversities(universities, searchTerm, location, major, minPrice, maxPrice, scholarship);
+  const filteredUniversities = filterUniversities(
+    universities,
+    searchTerm,
+    location,
+    major,
+    minPrice,
+    maxPrice,
+    scholarship
+  );
   updateUniversityGrid(filteredUniversities);
 });

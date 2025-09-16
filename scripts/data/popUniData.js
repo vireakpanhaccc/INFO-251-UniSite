@@ -1,4 +1,4 @@
-export const popularUniversities = [
+export const popUniData = [
   {
   id: 1,
   name: "American University of Phnom Penh",

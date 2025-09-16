@@ -1,4 +1,4 @@
-export const popularScholarships = [
+export const popScholarData = [
   {
     id: 1,
     name: "AUPP Merit Scholarship",

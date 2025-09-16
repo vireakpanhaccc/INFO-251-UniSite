@@ -1,4 +1,4 @@
-export const universities = [
+export const uniData = [
   {
     id: 1,
     name: "American University of Phnom Penh",

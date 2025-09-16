@@ -1,5 +1,3 @@
-
-
 export const locations = [
   "Phnom Penh",
   "Siem Reap",

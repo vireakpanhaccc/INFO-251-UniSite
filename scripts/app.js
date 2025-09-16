@@ -1,11 +1,11 @@
 import router from './router.js'
 
 // Initial render 
-// const appEl = document.getElementById('app');
-// function render() {router(appEl)}
+const appEl = document.getElementById('app');
+function render() {router(appEl)}
 
-// window.addEventListener("hashchange", render);
-// window.addEventListener("load", render);
+window.addEventListener("hashchange", render);
+window.addEventListener("load", render);
 
 // Header Menu toggle
 const profileBtn = document.getElementById('profile-btn');

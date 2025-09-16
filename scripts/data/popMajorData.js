@@ -1,5 +1,4 @@
-
-export const popularMajors = [
+export const popMajorData = [
   {
     id: 1,
     name: "Computer Science",
