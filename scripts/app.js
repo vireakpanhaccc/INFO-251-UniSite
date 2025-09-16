@@ -1,36 +1,45 @@
 import router from './router.js'
 
+// Initial render 
 const appEl = document.getElementById('app');
-const yearEl = document.getElementById("year");
-const menuBtn = document.getElementById("menu-btn");
-
-yearEl.textContent = new Date().getFullYear();
-menuBtn.addEventListener("click", () => {
-  if(menuBtn.firstChild.src.includes("menu.png")){
-    menuBtn.firstChild.src = './images/icon/close.png';
-    menuBtn.firstChild.style.height = '15px';
-    document.querySelector('.site-header .dynamic-nav').style.display ='block'
-  } else {
-    menuBtn.firstChild.src = './images/icon/menu.png';
-    menuBtn.firstChild.style.height = '20px';
-    document.querySelector('.site-header .dynamic-nav').style.display =''
-  }
-});
-
-document.querySelectorAll('.site-header .dynamic-nav ul li').forEach(item => {item.addEventListener('click', () => {
-  menuBtn.firstChild.src = './images/icon/menu.png';
-  menuBtn.firstChild.style.height = '20px';
-  document.querySelector('.site-header .dynamic-nav').style.display =''
-})})
-
-
-
-
-
-
-
-
 function render() {router(appEl)}
 
 window.addEventListener("hashchange", render);
 window.addEventListener("load", render);
+
+// Header Menu toggle
+const profileBtn = document.getElementById('profile-btn');
+const profileMenu = document.getElementById('profile-menu');
+
+profileBtn.addEventListener('click', () => {
+  profileMenu.classList.toggle('hidden');
+});
+
+// Mobile Menu toggle
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+mobileMenuBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('hidden');
+});
+
+// Close the menu if clicked outside
+window.addEventListener('click', (e) => {
+  if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
+    profileMenu.classList.add('hidden');
+  }
+  if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)){
+    mobileMenu.classList.add('hidden');
+  }
+})
+
+// Set current year in footer
+document.getElementById('year').textContent = new Date().getFullYear();
+
+
+
+
+
+
+
+
