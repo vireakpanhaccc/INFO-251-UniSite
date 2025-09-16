@@ -23,7 +23,7 @@ export default function Home() {
       </div>
       <div class="home-popular-universities ">
         <div class="title-with-hr flex items-center gap-3 mb-6">
-          <h1 class="text-2xl font-bold text-[#2c3e50ec]">Popular Universities</h1>
+          <h1 class="text-xl md:text-2xl font-bold text-[#2c3e50ec]">Popular Universities</h1>
           <hr class="flex-1 border-0 bg-[#2c3e50ec] h-1 rounded-sm">
           <a href="#/universities"><button class="text-sm md:text-md h-full">View All</button></a>
         </div>
@@ -33,7 +33,7 @@ export default function Home() {
       </div>
       <div class="home-popular-majors">
         <div class="title-with-hr flex items-center gap-3 mb-6">
-          <h1 class="text-2xl font-bold text-[#2c3e50ec]">Popular Majors</h1>
+          <h1 class="text-xl md:text-2xl font-bold text-[#2c3e50ec]">Popular Majors</h1>
           <hr class="flex-1 border-0 bg-[#2c3e50ec] h-1 rounded-sm">
           <a href="#/majors"><button class="text-sm md:text-md h-full">View All</button></a>
         </div>
@@ -43,7 +43,7 @@ export default function Home() {
       </div>
       <div class="home-popular-scholarships">
         <div class="title-with-hr flex items-center gap-3 mb-6">
-          <h1 class="text-2xl font-bold text-[#2c3e50ec]">Popular Scholarships</h1>
+          <h1 class="text-xl md:text-2xl font-bold text-[#2c3e50ec]">Popular Scholarships</h1>
           <hr class="flex-1 border-0 bg-[#2c3e50ec] h-1 rounded-sm">
           <a href="#/scholarships"><button class="text-sm md:text-md h-full">View All</button></a>
         </div>

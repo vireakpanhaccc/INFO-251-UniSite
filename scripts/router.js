@@ -4,6 +4,7 @@ import Majors from './view/Majors.js';
 import Scholarships from './view/Scholarships.js';
 import Forum from './view/Forum.js';
 import About from './view/About.js';
+import NotFound from './view/NotFound.js';
 
 function parseHash() {
   const h = location.hash || '#/';
@@ -21,15 +22,7 @@ export default function router(appEl){
     case 'scholarships': view = Scholarships(); break;
     case 'forum': view = Forum(); break;
     case 'about': view = About(); break;
-    default:
-      appEl.innerHTML = `
-          <div class="not-found-container">
-            <h1 class="error-code">404</h1>
-            <p class="error-message">Page not found</p>
-            <p class="info">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
-            <button class="home-btn" onclick="window.location.href='#/'">Go back home</button>
-          </div>
-      `;
+    default: view = NotFound(); break;
   }
   appEl.innerHTML = '';
   if(view) appEl.appendChild(view);
