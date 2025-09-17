@@ -3,7 +3,7 @@ export default function universityCards (universities) {
     <div class="uni-card h-[400px] border border-gray-300 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 relative max-w-[600px]">
       <div class="card-image relative mb-3 h-52">
         <img class="card-cover w-full h-full object-cover" src="${uni.cover_image}" alt="${uni.name} Campus">
-        <img class="card-logo size-14 object-cover absolute bottom-[-15px] left-[10px]" src="${uni.logo}" alt="${uni.name} Logo">
+        <img class="card-logo h-14 object-cover absolute bottom-[-15px] left-[10px]" src="${uni.logo}" alt="${uni.name} Logo">
       </div>
       <div class="card-content px-4">
         <h1 class="text-md font-bold">${uni.name}</h1>

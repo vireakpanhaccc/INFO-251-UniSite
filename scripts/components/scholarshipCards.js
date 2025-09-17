@@ -1,8 +1,8 @@
 export default function scholarshipCards (scholarships) {
   return scholarships.map(scholarship =>`
-    <div class="uni-card h-[400px] border border-gray-300 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 relative max-w-[600px]">
-      <div class="card-image relative mb-3 h-52">
-        <img class="card-cover w-full h-full object-cover" src="${scholarship.cover_image}" alt="${scholarship.name} Campus">
+    <div class="uni-card h-[500px] border border-gray-300 shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 relative max-w-[600px]">
+      <div class="card-image relative mb-3 border-b border-gray-300">
+        <img class="card-cover w-full h-full object-contain max-h-[320px] min-h-[320px] " src="${scholarship.cover_image}" alt="${scholarship.name} Campus">
       </div>
       <div class="card-content px-4">
         <h3 class="text-md font-bold">${scholarship.name}</h3>

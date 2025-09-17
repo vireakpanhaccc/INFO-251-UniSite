@@ -92,8 +92,8 @@ export const uniData = [
     description: "A private university with a focus on humanities and social sciences.",
     ranking: 4,
     priceRange: { min: 1300, max: 2800 }, // Annual tuition fee range in USD
-    logo: "/images/pic/universities/logo/puc.png",
-    cover_image: "/images/pic/universities/cover/puc-campus.jpg",
+    logo: "/images/pic/universities/logo/PUC_Logo.png",
+    cover_image: "/images/pic/universities/cover/PUC_Campus.jpg",
     majors: ["International Relations", "Communication Arts", "Law"],
     scholarships: ["PUC Merit Scholarship", "PUC Leadership Scholarship"]
   },
@@ -107,7 +107,7 @@ export const uniData = [
     ranking: 3,
     priceRange: { min: 1000, max: 2500 }, // Annual tuition fee range in USD
     logo: "/images/pic/universities/logo/uc.png",
-    cover_image: "/images/pic/universities/cover/university-of-cambodia.jpg",
+    cover_image: "/images/pic/universities/cover/UC-Campus.jpg",
     majors: ["Business", "Law", "Information Technology"],
     scholarships: ["UC Academic Scholarship", "UC Sports Scholarship"]
   },
@@ -120,8 +120,8 @@ export const uniData = [
     description: "A private university with multiple campuses across Cambodia.",
     ranking: 3,
     priceRange: { min: 800, max: 2000 }, // Annual tuition fee range in USD
-    logo: "/images/pic/universities/logo/bbu.png",
-    cover_image: "/images/pic/universities/cover/build-bright-university.jpg",
+    logo: "/images/pic/universities/logo/bbu_logo.jpg",
+    cover_image: "/images/pic/universities/cover/bbu-campus.jpg",
     majors: ["Business Administration", "Information Technology", "Tourism Management"],
     scholarships: ["BBU Merit Scholarship", "BBU Community Service Scholarship"]
   },
@@ -135,7 +135,7 @@ export const uniData = [
     ranking: 3,
     priceRange: { min: 900, max: 2200 }, // Annual tuition fee range in USD
     logo: "/images/pic/universities/logo/aeu.png",
-    cover_image: "/images/pic/universities/cover/asia-euro-university.jpg",
+    cover_image: "/images/pic/universities/cover/aeu-campus.jpg",
     majors: ["Business", "Information Technology", "International Relations"],
     scholarships: []
   } 

@@ -61,7 +61,6 @@ export default function Home() {
         <a href="#/forum"><button class="m-20 py-5 px-14 text-xl rounded-4xl bg-[#2c3e50ec] text-white hover:bg-[#2c3e50] active:brightness-80">Visit Forum</button></a>
       </div>
     </div>
-
   `;
   return el;
 }
