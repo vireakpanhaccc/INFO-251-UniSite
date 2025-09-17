@@ -15,11 +15,11 @@ export default function Home() {
     <div class="home-content flex flex-col gap-5 py-5 px-[5%]">
       <div class="w-full text-center">
         <h1 class="text-[#2c3e50ec] font-bold text-2xl md:text-4xl mt-4">Discover Your Future with UniSites</h1>
-        <p class="mb-6 mt-3">Explore universities, majors, scholarships, and connect with peers.</p>  
+        <p class="text-sm md:text-md mb-6 mt-3">Explore universities, majors, scholarships, and connect with peers.</p>  
       </div>
-      <div class="home-search-barw-full flex justify-center mb-6 h-10 text-sm md:text-md">
+      <div class="home-search-bar w-full flex justify-center mb-6 h-10 text-xs md:text-md">
         <input class="flex-1 max-w-2xl h-10 border border-gray-400 rounded-l-3xl pl-4" type="text" placeholder="Search for universities, majors, scholarships...">
-        <button class=" bg-[#2c3e50ec] border border-[#2c3e50ec] text-white px-4 md:px-8 rounded-r-3xl hover:bg-[#2c3e50] active:brightness-80">Search</button>
+        <button class="bg-[#2c3e50ec] border border-[#2c3e50ec] text-white px-4 md:px-8 rounded-r-3xl hover:bg-[#2c3e50] active:brightness-80">Search</button>
       </div>
       <div class="home-popular-universities ">
         <div class="title-with-hr flex items-center gap-3 mb-6">
