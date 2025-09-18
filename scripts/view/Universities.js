@@ -42,13 +42,13 @@ export default function Universities() {
         <label for="scholarshipOnly">Scholarships Only</label>
       </div>
     </div> 
-    <div class="uni-content">
-      <div class="title-with-hr">
-          <hr>
-          <h2>Universities Card</h2>
-          <hr>
+    <div class="uni-content px-5">
+      <div class="title-with-hr flex items-center gap-3 mb-6">
+        <hr class="flex-1 border-0 bg-[#2c3e50ec] h-1 rounded-sm">
+        <h2 class="text-2xl font-bold text-[#2c3e50ec]">Universities Cards</h2>
+        <hr class="flex-1 border-0 bg-[#2c3e50ec] h-1 rounded-sm">
       </div>
-      <div class="university-grid">
+      <div class="card-container grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 mb-10">
         ${universityGrid}
       </div>
     </div>

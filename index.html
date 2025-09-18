@@ -9,112 +9,11 @@
 
 </head>
 <body class="mt-14">
-  <header class="bg-white border-b border-gray-300  fixed top-0 w-full z-[1000] shadow-md">
-    <!-- Header Nav with H-14 -->
-    <nav id="desktop-nav" class="flex items-center justify-between max-w-[1600px] mx-auto px-[5%] text-md lg:text-lg h-14">
-      <div>
-        <a href="#/"><img class="h-11 lg:h-14 w-auto active:brightness-80 active:scale-90" src="./images/logo/UniSites-Lanscape.png" alt="brand-logo"></a>
-      </div>
-      <div class="flex items-center gap-6">
-        <div class="hidden md:flex gap-4">
-          <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/" id="home">Home</a>
-          <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/universities" id="universities">Universities</a>
-          <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/majors" id="majors">Majors</a>
-          <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/scholarships" id="scholarships">Scholarships</a>
-          <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/forum" id="forum">Forum</a>
-          <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/about" id="about">About</a>
-        </div>
-        <div class="flex items-center gap-4">
-          <div class="flex items-center justify-between gap-4 relative">
-            <!-- Profile Button -->
-            <button id="profile-btn">
-              <img src="./images/icon/my-profile.jpg" alt="user_profile" class="size-8 active:brightness-80 active:scale-90 border border-gray-300 rounded-full box-shadow-sm" />
-            </button>
-            <!-- Dropdown Menu -->
-            <div id="profile-menu" class="hidden absolute top-0 right-0 mt-12 w-48 bg-white shadow-lg rounded-md overflow-hidden border border-gray-200 text-sm">
-              <a href="#/profile" class="flex items-center gap-3 py-2 px-3 hover:bg-blue-200 active:brightness-90 text-[#2c3e50ec]"><img class="size-4" src="./images/icon/user.png" alt=""><p>Your profile</p></a>
-              <a href="#/settings" class="flex items-center gap-3 py-2 px-3 hover:bg-blue-200 active:brightness-90 text-[#2c3e50ec]"><img class="size-4" src="./images/icon/settings.png" alt=""><p>Settings</p></a>
-              <a href="#/signout" class="flex items-center gap-3 py-2 px-3 hover:bg-blue-200 active:brightness-90 text-[#2c3e50ec]"><img class="size-4" src="./images/icon/exit.png" alt=""><p>Sign out</p></a>
-            </div>
-            <!-- Mobile Menu Button -->
-            <div class="h-6 border-l border-gray-300 md:hidden"></div>
-              <button id="mobile-menu-btn" class="md:hidden">
-                <img class="size-5 active:brightness-80 active:scale-90" src="./images/icon/menu.png" alt="menu-icon">
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <!-- Mobile Menu-->
-    <nav id="mobile-nav" class="block md:hidden">
-      <div id="mobile-menu" class="hidden flex-col items-center bg-white border-t border-gray-300 w-full text-center text-md lg:text-lg shadow-md">
-        <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/" id="home">Home</a>
-        <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/universities" id="universities">Universities</a>
-        <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/majors" id="majors">Majors</a>
-        <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/scholarships" id="scholarships">Scholarships</a>
-        <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/forum" id="forum">Forum</a>
-        <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/about" id="about">About</a>
-      </div>
-    </nav>
-  </header>
+  <header id="header"></header>
 
-  <main id="app" class="min-h-[600px]"></main>
+  <main id="app" class="min-h-[850px]"></main>
 
-  <footer class="text-[#f3f3f3f8] bg-[#2c3e50ec] py-5 px-2 border-t border-gray-300 shadow-md w-full">
-    <div class="flex flex-wrap justify-between gap-5 py-0 px-[5%]">
-      <div class="min-w-50 max-w-xl">
-        <h1 class="text-xl font-bold mb-2">UniSites</h1>
-        <p>UniSites is a platform dedicated to helping students find the best universities, majors, and scholarships in Cambodia. We also provide a forum for students to connect and share their experiences.</p>
-        <h1 class="text-xl font-bold my-2">Contact</h1>
-        <p>Email: <a href="mailto:unisites@aupp.edu.kh">unisites@aupp.edu.kh</a></p>
-        <p>Phone: <a href="tel:+85512345678">+855 12 345 678</a></p>
-        <p>Address: <a href="https://maps.app.goo.gl/UACZ9YS73veDDU339" target="_blank">Kilometer 6, 278H, Street 201R, Kroalkor Village, Unnamed Road, Phnom Penh</a></p>
-      </div>
-      <div class="min-w-50 max-w-xl">
-          <h1 class="text-xl font-bold mb-2">Policies</h1>
-          <ul>
-            <li class="mb-2 active:opacity-70 "><a class="hover:underline"  href="#/">Privacy Policy</a></li>
-            <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/">Terms & Conditions</a></li>
-            <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/">Cookie Policy</a></li>
-            <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/">Disclaimer</a></li>
-            <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/">FAQs</a></li>
-            <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/">Copyright Notice</a></li>
-          </ul> 
-      </div>
-      <div class="min-w-50 max-w-xl">
-          <h1 class="text-xl font-bold mb-2">Quick Links</h1>
-          <ul>
-            <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/">Home</a></li>
-            <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/universities">Universities</a></li>
-            <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/majors">Majors</a></li>
-            <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/scholarships">Scholarships</a></li>
-            <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/forum">Forum</a></li>
-            <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/about">About</a></li>
-          </ul>
-      </div>
-      <div class="min-w-50 max-w-fit-content">
-        <h1 class="text-xl font-bold mb-2">Follow Us</h1>
-        <p class="flex flex-wrap gap-3 mb-5">
-          <a href="#/"><img class="size-10 brightness-80 transition-all hover:brightness-100 active:scale-90" src="./images/icon/facebook.png" alt=""></a>
-          <a href="#/"><img class="size-10 brightness-80 transition-all hover:brightness-100 active:scale-90" src="./images/icon/instagram.png" alt=""></a>
-          <a href="#/"><img class="size-10 brightness-80 transition-all hover:brightness-100 active:scale-90" src="./images/icon/telegram.png" alt=""></a>
-          <a href="#/"><img class="size-10 brightness-80 transition-all hover:brightness-100 active:scale-90" src="./images/icon/twitter.png" alt=""></a>
-          <a href="#/"><img class="size-10 brightness-80 transition-all hover:brightness-100 active:scale-90" src="./images/icon/linkedin.png" alt=""></a>
-        </p>
-        <h1 class="text-xl font-bold mb-2">Our partners</h1>
-        <p class="flex flex-wrap gap-3 mb-5">
-          <a href="#/"><img class="size-10 brightness-80 transition-all hover:brightness-100 active:scale-90" src="./images/icon/AUPP_Logo.png" alt="AUPP" title="AUPP"></a>
-          <a href="#/"><img class="size-10 brightness-80 transition-all hover:brightness-100 active:scale-90" src="./images/icon/Institute_of_Technology_of_Cambodia_logo.png" alt="ITC" title="ITC"></a>
-          <a href="#/"><img class="size-10 brightness-80 transition-all hover:brightness-100 active:scale-90" src="./images/icon/RUPP_logo.png" alt="PD" title="PD"></a>
-          <a href="#/"><img class="size-10 brightness-80 transition-all hover:brightness-100 active:scale-90" src="./images/icon/images.png" alt="BuildBright" title="BuildBright"></a>
-        </p>
-      </div>
-    </div>
-    <div class="text-sm text-center border-t border-gray-300 pt-3 mt-3 px-[5%]">
-      <p>© <strong><span id="year"></span></strong> UniSites. All Rights Reserved.</p>
-    </div>
-  </footer>
+  <footer id="footer"></footer>
 
   <script type="module" src="./scripts/app.js"></script> 
 </body>

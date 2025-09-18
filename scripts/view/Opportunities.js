@@ -1,9 +1,9 @@
 
 
-export default function Scholarships(){
+export default function Opportunities(){
   const el = document.createElement('div');
   el.innerHTML = `
-    <h1>Scholarships</h1>
+    <h1>Opportunities</h1>
   `;
   return el;
 }
