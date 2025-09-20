@@ -5,7 +5,7 @@ export default function programCards(programs) {
   }
 
   return programs.map(prog => `
-    <li class="border border-gray-300 rounded shadow hover:shadow-md transition bg-white p-3">
+    <li class="border border-gray-300 rounded shadow-2xl hover:shadow-md transition bg-white p-3">
       <div class="flex justify-between items-center">
         <h3 class="text-lg font-semibold">${prog.name}</h3>
         <button class="toggle-details text-sm hover:underline px-3 py-1 ">View Details</button>

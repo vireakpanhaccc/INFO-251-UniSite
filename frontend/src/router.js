@@ -15,25 +15,25 @@ function parseHash() {
   return { route: route || '', id };
 }
 
-export default function router(appEl, headerEl, footerEl) {
+export default async function router(appEl, headerEl, footerEl) {
   let view = null;
   const {route, id} = parseHash();
   switch(route){
     case '': view = Home(); break;
     case 'universities': 
       if(id) {
-          view = UniversityDetails(id);
-          if (!view) view = NotFound();
+          view = await UniversityDetails(id);
+          if (!view) view = await NotFound();
         break;
       }
       else
-        view = Universities(); 
+        view = await Universities(); 
       break;
-    case 'majors': view = Majors(); break;
-    case 'opportunities': view = Opportunities(); break;
-    case 'forum': view = Forum(); break;
-    case 'about': view = About(); break;
-    default: view = NotFound(); break;
+    case 'majors': view = await Majors(); break;
+    case 'opportunities': view = await Opportunities(); break;
+    case 'forum': view = await Forum(); break;
+    case 'about': view = await About(); break;
+    default: view = await NotFound(); break;
   }
   appEl.innerHTML = '';
   headerEl.innerHTML = '';
