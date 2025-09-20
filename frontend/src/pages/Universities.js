@@ -1,9 +1,9 @@
 import { locations, majors } from "../data/filterData.js";
-import {uniData} from "../data/uniData.js";
+import {universitiesData} from "../data/universitiesData.js";
 import universityCards from "../components/universityCards.js";
 
 export default function Universities() {
-  const universityGrid = universityCards(uniData);
+  const universityGrid = universityCards(universitiesData);
   const el = document.createElement("div");
   el.innerHTML = `
     <div class="universities-container">

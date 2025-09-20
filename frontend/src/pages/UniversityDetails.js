@@ -1,0 +1,119 @@
+import {universitiesData} from '../data/universitiesData.js';
+import {programsData} from '../data/programsData.js';
+import {scholarshipData} from '../data/scholarshipData.js';
+import eventCards from '../components/eventCards.js';
+import scholarshipCards from '../components/scholarshipCards.js';
+
+
+export default function UniversityDetails(uni_id) {
+  const el = document.createElement('div');
+  const university = universitiesData.find(uni => uni.id === uni_id);
+  const scholarships = scholarshipData.filter(sch => sch.uni_id.includes(university.id));
+  const programs = programsData.filter(prog => prog.uni_id === university.id);
+  if (!university) return null;
+  el.innerHTML = `
+    <div class="university-page flex flex-col gap-4">
+      <!-- University Header Section-->
+      <section class="relative w-full h-44 sm:h-64 md:h-96 overflow-hidden bg-gray-200">
+        <img class="w-full h-full object-cover brightness-50" src="${university.images.cover}" alt="${university.name} cover image">
+        <div class="absolute left-4 md:left-8 bottom-4 md:bottom-8 flex items-start space-x-4">
+          <img class="h-12 sm:h-20 md:h-28 object-cover shadow-lg" src="${university.images.logo}" alt="${university.name} logo">
+          <div class="text-white">
+            <h1 class=" xs:text-xl sm:text-2xl md:text-5xl font-bold">${university.name}</h1>
+            <p class="text-md md:text-xl mt-2">${university.location.city}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- University Details Section-->
+      <section class="px-4 md:px-8 lg:px-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div class="col-span-2">
+            <h2 class="text-3xl font-semibold mb-4">University Info</h2>
+            <p class="mb-2">${university.description}</p>
+          </div>
+          <div class="col-span-2 md:col-span-1">
+            <p class="mb-2"><strong>Location:</strong> ${university.location.address || 'Address not available'}, ${university.location.city}</p>
+            <p class="mb-2"><strong>Phone:</strong> ${university.contact.phone || 'N/A'}</p>
+            <p class="mb-2"><strong>Email:</strong> ${university.contact.email || 'N/A'}</p>
+            <p class="mb-2"><strong>Website:</strong> <a href="${university.website}" target="_blank" class="text-blue-600 underline">${university.website}</a></p>
+            <p class="mb-2"><strong>Tuition Fees:</strong> ${university.tuition.min} - ${university.tuition.max} ${university.tuition.currency} (${university.tuition.period})</p>
+            <p class="mb-2"><strong>Deadlines:</strong> ${university.admissions.deadlines || 'N/A'}</p>
+            <p class="mb-2"><strong>Requirements:</strong> ${university.admissions.requirements.length > 0 ? university.admissions.requirements.join(', ') : 'N/A'}</p>
+          </div>
+          <div class="col-span-2 md:col-span-1">
+            <p class="mb-2"><strong>Type:</strong> ${university.type}</p>
+            <p class="mb-2"><strong>Established:</strong> ${university.established}</p>
+            <p class="mb-2"><strong>Student Population:</strong> ${university.student_population || 'N/A'}</p>
+            <p class="mb-2"><strong>Campus Size:</strong> ${university.campus.size || 'N/A'}</p>
+            <p class="mb-2"><strong>Accreditation:</strong> ${university.accreditation || 'N/A'}</p>
+            <p class="mb-2"><strong>Ranking:</strong> ${university.ranking ? `#${university.ranking}` : 'N/A'}</p>
+            <p class="mb-2 text-sm text-gray-500">Last Updated: ${university.last_updated}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Programs Section-->
+      <div class="px-4 md:px-8 lg:px-16 pt-6 pb-10 bg-blue-950 text-white">
+        <h2 class="text-center text-3xl font-semibold mb-6">Programs Offered</h2>
+
+        <!-- Filters -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-6">
+          <input id="progSearch" type="text" placeholder="Search by name or description…" class="md:col-span-2 px-3 py-2 rounded text-gray-900" />
+
+          <select id="progDegree" class="px-3 py-2 rounded text-gray-900">
+            <option value="">All Degrees</option>
+          </select>
+
+          <select id="progLanguage" class="px-3 py-2 rounded text-gray-900">
+            <option value="">All Languages</option>
+          </select>
+
+          <select id="progSpec" class="px-3 py-2 rounded text-gray-900">
+            <option value="">All Specializations</option>
+          </select>
+        </div>
+
+        <!-- Results meta + reset -->
+        <div class="flex items-center justify-between text-sm mb-4">
+          <span id="progCount" class="opacity-80">0 results</span>
+          <button id="progReset" class="px-3 py-1 rounded bg-white/10 hover:bg-white/20 transition">Reset filters</button>
+        </div>
+
+        <!-- List -->
+        <ul id="progList" class="space-y-3">
+
+        </ul>
+
+        <!-- Empty state -->
+        <p id="progEmpty" class="text-center opacity-80 hidden mt-8">No programs match your filters.</p>
+      </div>
+
+      <!-- Scholarships Section-->
+      <section class="px-4 md:px-8 lg:px-16 pt-6 pb-10">
+        <h2 class="text-center text-3xl font-semibold mb-4">Available Scholarships</h2>
+        <div class="card-container grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 mb-10">
+          ${scholarshipCards(scholarships)}
+        </div>
+      </section>
+
+      <!-- Events Section-->
+      <section class="px-4 md:px-8 lg:px-16 pt-6 pb-10 bg-[#9f6a08]">
+        <h2 class=" text-white text-center text-3xl font-semibold mb-4">Upcoming Events</h2>
+        <div class="flex flex-wrap items-center gap-6 w-full justify-center">
+            ${eventCards(university.events)}
+        </div>
+
+      </section>
+
+      <!-- Maps Section-->
+      <section class="mt-2">
+        <h2 class="text-center text-3xl font-semibold mb-5">Campus Map</h2>
+        <div class="w-full h-80">
+          <iframe src="${university.location.map}" class="w-full h-full" style="pointer-events:auto;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </section>
+    </div>
+  `;
+  return el;
+}
