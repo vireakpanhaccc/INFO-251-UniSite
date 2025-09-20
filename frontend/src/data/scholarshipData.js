@@ -14,7 +14,7 @@ export const scholarshipData =[
   },
   {
     id: 2,
-    uni_id: ['uni-001', 'uni-002', 'uni-003', 'uni-004', 'uni-005', 'uni-006', 'uni-007', 'uni-008', 'uni-009', 'uni-010'],
+    uni_id: ['uni-001', 'uni-002', 'uni-003', 'uni-008', 'uni-009', 'uni-010'],
     name: "អាហារូបករណ៍ អ.ម.ត",
     provider: "សម្ដេចតេជោ ហ៊ុន សែន តាមរយៈសម្ដេចធិបតី ហ៊ុន ម៉ាណែត",
     cover_image: "./images/pic/universities/cover/amt_scholarship.jpg",

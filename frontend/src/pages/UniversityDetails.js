@@ -3,6 +3,7 @@ import {programsData} from '../data/programsData.js';
 import {scholarshipData} from '../data/scholarshipData.js';
 import eventCards from '../components/eventCards.js';
 import scholarshipCards from '../components/scholarshipCards.js';
+import programCards from '../components/programCards.js';
 
 
 export default function UniversityDetails(uni_id) {
@@ -54,43 +55,15 @@ export default function UniversityDetails(uni_id) {
       </section>
 
       <!-- Programs Section-->
-      <div class="px-4 md:px-8 lg:px-16 pt-6 pb-10 bg-blue-950 text-white">
-        <h2 class="text-center text-3xl font-semibold mb-6">Programs Offered</h2>
-
-        <!-- Filters -->
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-6">
-          <input id="progSearch" type="text" placeholder="Search by name or description…" class="md:col-span-2 px-3 py-2 rounded text-gray-900" />
-
-          <select id="progDegree" class="px-3 py-2 rounded text-gray-900">
-            <option value="">All Degrees</option>
-          </select>
-
-          <select id="progLanguage" class="px-3 py-2 rounded text-gray-900">
-            <option value="">All Languages</option>
-          </select>
-
-          <select id="progSpec" class="px-3 py-2 rounded text-gray-900">
-            <option value="">All Specializations</option>
-          </select>
-        </div>
-
-        <!-- Results meta + reset -->
-        <div class="flex items-center justify-between text-sm mb-4">
-          <span id="progCount" class="opacity-80">0 results</span>
-          <button id="progReset" class="px-3 py-1 rounded bg-white/10 hover:bg-white/20 transition">Reset filters</button>
-        </div>
-
+      <div class="px-4 md:px-8 lg:px-16 pt-6 pb-10 bg-blue-950">
+        <h2 class="text-white text-center text-3xl font-semibold mb-6">Programs Offered</h2>
         <!-- List -->
         <ul id="progList" class="space-y-3">
-
+          ${programCards(programs)}
         </ul>
-
-        <!-- Empty state -->
-        <p id="progEmpty" class="text-center opacity-80 hidden mt-8">No programs match your filters.</p>
       </div>
-
       <!-- Scholarships Section-->
-      <section class="px-4 md:px-8 lg:px-16 pt-6 pb-10">
+      <section class="px-4 md:px-8 lg:px-16 pt-6 pb-10 bg-white">
         <h2 class="text-center text-3xl font-semibold mb-4">Available Scholarships</h2>
         <div class="card-container grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 mb-10">
           ${scholarshipCards(scholarships)}
@@ -115,5 +88,20 @@ export default function UniversityDetails(uni_id) {
       </section>
     </div>
   `;
+  const toggleButtons = el.querySelectorAll('.toggle-details');
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const details = button.closest('li').querySelector('.program-details');
+      if (details.classList.contains('hidden')) {
+        details.classList.remove('hidden');
+        button.textContent = 'Hide Details';
+      } else {
+        details.classList.add('hidden');
+        button.textContent = 'View Details';
+      }
+    });
+  });
+
   return el;
 }
+
