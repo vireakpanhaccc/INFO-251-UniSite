@@ -3,6 +3,7 @@ import Universities from './pages/Universities.js';
 import UniversityDetails from './pages/UniversityDetails.js';
 import Majors from './pages/Majors.js';
 import Opportunities from './pages/Opportunities.js';
+import OpportunityDetails from './pages/OpportunityDetails.js';
 import Forum from './pages/Forum.js';
 import About from './pages/About.js';
 import NotFound from './pages/NotFound.js';
@@ -30,7 +31,15 @@ export default async function router(appEl, headerEl, footerEl) {
         view = await Universities(); 
       break;
     case 'majors': view = await Majors(); break;
-    case 'opportunities': view = await Opportunities(); break;
+    case 'opportunities': 
+      if(id) {
+          view = await OpportunityDetails(id);
+          if (!view) view = await NotFound();
+        break;
+      }
+      else
+        view = await Opportunities(); 
+      break;
     case 'forum': view = await Forum(); break;
     case 'about': view = await About(); break;
     default: view = await NotFound(); break;

@@ -15,7 +15,3 @@ export default function eventCards (events) {
       </div>
     </div>`).join('');
 }
-
-  
-
-  
