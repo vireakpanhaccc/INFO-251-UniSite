@@ -4,11 +4,13 @@ import {scholarshipData} from '../data/scholarshipData.js';
 import eventCards from '../components/eventCards.js';
 import scholarshipCards from '../components/scholarshipCards.js';
 import programCards from '../components/programCards.js';
+import { api } from '../api.js';
 
 
-export default function UniversityDetails(uni_id) {
+export default async function UniversityDetails(uni_id) {
+  const universities = await api.get('/universities');
   const el = document.createElement('div');
-  const university = universitiesData.find(uni => uni.id === uni_id);
+  const university = universities.find(uni => uni._id === uni_id);
   const scholarships = scholarshipData.filter(sch => sch.uni_id.includes(university.id));
   const programs = programsData.filter(prog => prog.uni_id === university.id);
   if (!university) return null;

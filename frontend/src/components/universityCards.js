@@ -11,7 +11,7 @@ export default function universityCards (universities) {
         <p>Type: ${uni.type}</p>
         <p>Tuition: ${uni.tuition.min} - ${uni.tuition.max} ${uni.tuition.currency} (${uni.tuition.period})</p>
         <p>Ranking: ${'⭐'.repeat(uni.ranking)}</p>
-        <a class="absolute bottom-4 right-4 py-1.5 px-2 bg-[#2c3e50ec] text-sm text-white rounded hover:bg-[#2c3e50] active:brightness-80" href="#/universities/${uni.id}">Visit Details</a>
+        <a class="absolute bottom-4 right-4 py-1.5 px-2 bg-[#2c3e50ec] text-sm text-white rounded hover:bg-[#2c3e50] active:brightness-80" href="#/universities/${uni._id}">Visit Details</a>
       </div>
     </div>
   `).join('');

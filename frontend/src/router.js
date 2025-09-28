@@ -20,7 +20,7 @@ export default async function router(appEl, headerEl, footerEl) {
   let view = null;
   const {route, id} = parseHash();
   switch(route){
-    case '': view = Home(); break;
+    case '': view = await Home(); break;
     case 'universities': 
       if(id) {
           view = await UniversityDetails(id);
