@@ -1,10 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const {logRequest} = require("./middlewares/logMiddleware");
+const homeRouter = require("./routes/homeRoutes");
 const uniRouter = require("./routes/universityRoutes");
 const majorRouter = require("./routes/majorRoutes");
 const opportunityRouter = require("./routes/opportunityRoutes");
-
+const authRouter = require("./routes/authRoutes");
 
 // Middleware
 app.use(cors());
@@ -12,14 +14,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+// Log all incoming requests
+app.use(logRequest);
+
+// Routers
+app.use("/home", homeRouter);
+app.use("/auth", authRouter);
 app.use("/universities", uniRouter);
 app.use("/majors", majorRouter);
 app.use("/opportunities", opportunityRouter);
-
-
-// Routes
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the API, One Piece fans!" });
-});
 
 module.exports = app;

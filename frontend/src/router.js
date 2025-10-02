@@ -6,6 +6,9 @@ import Opportunities from './pages/Opportunities.js';
 import OpportunityDetails from './pages/OpportunityDetails.js';
 import Forum from './pages/Forum.js';
 import About from './pages/About.js';
+import Register from './pages/Register.js';
+import Login from './pages/Login.js';
+import ResetPassword from './pages/ResetPassword.js'
 import NotFound from './pages/NotFound.js';
 import header from './components/header.js';
 import footer from './components/footer.js';
@@ -42,6 +45,9 @@ export default async function router(appEl, headerEl, footerEl) {
       break;
     case 'forum': view = await Forum(); break;
     case 'about': view = await About(); break;
+    case 'register': view = await Register(); break;
+    case 'login': view = await Login(); break;
+    case 'reset-password': view = await ResetPassword(); break;
     default: view = await NotFound(); break;
   }
   appEl.innerHTML = '';

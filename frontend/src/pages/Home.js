@@ -1,9 +1,6 @@
 import universityCards from "../components/universityCards.js";
 import majorCards from "../components/majorCards.js";
 import scholarshipCards from "../components/scholarshipCards.js";
-import { popUniData } from "../data/popUniData.js";
-import { popMajorData } from "../data/popMajorData.js";
-import { popScholarData } from "../data/popScholarData.js";
 import { api } from "../api.js";
 
 
@@ -11,7 +8,6 @@ export default async function Home() {
   const universities = await api.get('/universities');
   const majors = await api.get('/majors');
   const scholarships = await api.get('/opportunities/scholarships');
-  console.log(universities)
   const el = document.createElement("div");
   el.innerHTML = `
     <div class="home-cover">
