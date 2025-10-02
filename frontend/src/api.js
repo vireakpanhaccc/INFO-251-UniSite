@@ -59,7 +59,7 @@ async function refreshAccessToken() {
   const refreshToken = getRefreshToken();
   if (!refreshToken) return false;
 
-  const response = await fetch(`${BASE_URL}/refresh-token`, {
+  const response = await fetch(`${BASE_URL}/auth/refresh-token`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

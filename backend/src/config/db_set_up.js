@@ -1,4 +1,6 @@
 const { mongoClient, db } = require('./mongoClient');  // Import your MongoDB client and db
+const bcrypt = require('bcrypt');
+
 
 async function setUpDatabase(universities, majors, scholarships) {
   try {
@@ -6,6 +8,19 @@ async function setUpDatabase(universities, majors, scholarships) {
     if (!db) {
       throw new Error('MongoDB connection is not established');
     }
+
+    const usersCollection = db.collection('users'); // Get the users collection
+    const deleteUserResult = await usersCollection.deleteMany({});
+    console.log(`Deleted ${deleteUserResult.deletedCount} documents from the collection.`);
+    // Hash passwords before inserting users
+    const usersWithHashedPasswords = await Promise.all(
+      users.map(async user => ({
+      ...user,
+      password: await bcrypt.hash(user.password, 10)
+      }))
+    );
+    const userResult = await usersCollection.insertMany(usersWithHashedPasswords);
+    console.log(`Inserted ${userResult.insertedCount} users into the database`);
 
     const universitiesCollection = db.collection('universities'); // Get the universities collection
     const deleteResult = await universitiesCollection.deleteMany({});
@@ -34,6 +49,22 @@ async function setUpDatabase(universities, majors, scholarships) {
   }
 }
 
+const users = [
+  {
+    _id: "user-001",
+    email: "tokata453@gmail.com",
+    password: "tokata123",
+    name: "TOKATA",
+    role: "admin",
+  },
+  {
+    _id: "user-002",
+    email: "panhaseth453@gmail.com",
+    password: "user123",
+    name: "Panhaseth SUY",
+    role: "user",
+  }
+];
 
 const universities = [
   {

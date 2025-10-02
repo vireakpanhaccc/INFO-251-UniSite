@@ -83,20 +83,20 @@ export default function Universities() {
   minPriceInput.addEventListener("input", () => {
     minPriceLabel.textContent = minPriceInput.value;
   });
-  const exstabishYearInput = el.querySelector("#establishedSelect");
-  exstabishYearInput.addEventListener("input", () => {
-    const year = parseInt(exstabishYearInput.value, 10);
-    if (year < 1900) exstabishYearInput.value = 1900;
-    if (year > new Date().getFullYear()) exstabishYearInput.value = new Date().getFullYear();
+  const establishedYearInput = el.querySelector("#establishedSelect");
+  establishedYearInput.addEventListener("change", () => {
+    const year = parseInt(establishedYearInput.value, 10);
+    if (year < 1900) establishedYearInput.value = 1900;
+    if (year > new Date().getFullYear()) establishedYearInput.value = new Date().getFullYear();
   });
   const rankingInput = el.querySelector("#rankingSelect");
-  rankingInput.addEventListener("input", () => {
+  rankingInput.addEventListener("change", () => {
     const rank = parseInt(rankingInput.value, 10);
     if (rank < 1) rankingInput.value = 1;
     if (rank > 5) rankingInput.value = 5;
   });
   const studentPopInput = el.querySelector("#studentPopulationSelect");
-  studentPopInput.addEventListener("input", () => {
+  studentPopInput.addEventListener("change", () => {
     const pop = parseInt(studentPopInput.value, 10);
     if (pop < 0) studentPopInput.value = 0;
   }); 
@@ -105,83 +105,7 @@ export default function Universities() {
   const uniCountSpan = el.querySelector(".uni-count");
   uniCountSpan.textContent = universitiesData.length;
 
-  return el;
-}
-
-function filterUniversities(
-  universitiesData,
-  searchTerm,
-  location,
-  type,
-  establishedAfter,
-  minRanking,
-  minStudentPop,
-  minPrice,
-  maxPrice,
-  scholarship
-) {
-  return universitiesData.filter((university) => {
-    const matchesSearch = university.name
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    const matchesLocation = location ? university.location.city === location : true;
-    const matchesType = type ? university.type === type : true;
-    const matchesEstablished = establishedAfter
-      ? university.established >= establishedAfter
-      : true;
-    const matchesRanking = minRanking
-      ? university.ranking && university.ranking >= minRanking
-      : true;
-    const matchesStudentPop = minStudentPop
-      ? university.student_population &&
-        university.student_population >= minStudentPop
-      : true;
-    const matchesPrice =
-      university.tuition.min >= minPrice &&
-      university.tuition.max <= maxPrice;
-    const matchesScholarship = scholarship
-      ? scholarshipData.some((sch) => sch.uni_id.includes(university.id))
-      : true;
-    return (
-      matchesSearch &&
-      matchesLocation &&
-      matchesType &&
-      matchesEstablished &&
-      matchesRanking &&
-      matchesStudentPop &&
-      matchesPrice &&
-      matchesScholarship
-    );
-  });
-}
-
-function updateUniversityGrid(universities) {
-  const universityGrid = document.querySelector(".uni-grid");
-  universityGrid.innerHTML = universityCards(universities);
-}
-
-// Event listeners for filters
-document.addEventListener("input", () => {
-  const searchTerm = document.querySelector("#searchUni").value;
-  const location = document.querySelector(".location-filter select").value;
-  const type = document.querySelector(".type-filter select").value;
-  const establishedAfter = parseInt(
-    document.querySelector("#establishedSelect").value,
-    10
-  );
-  const minRanking = parseInt(
-    document.querySelector("#rankingSelect").value,
-    10
-  );
-  const minStudentPop = parseInt(
-    document.querySelector("#studentPopulationSelect").value,
-    10
-  );
-  const minPrice = parseInt(document.querySelector("#minPrice").value, 10);
-  const maxPrice = parseInt(document.querySelector("#maxPrice").value, 10);
-  const scholarship = document.querySelector("#scholarshipOnly").checked;
-
-  const filteredUniversities = filterUniversities(
+  function filterUniversities(
     universitiesData,
     searchTerm,
     location,
@@ -192,8 +116,84 @@ document.addEventListener("input", () => {
     minPrice,
     maxPrice,
     scholarship
-  );
-  const uniCountSpan = document.querySelector(".uni-count");
-  uniCountSpan.textContent = filteredUniversities.length;
-  updateUniversityGrid(filteredUniversities);
-});
+  ) {
+    return universitiesData.filter((university) => {
+      const matchesSearch = university.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+      const matchesLocation = location ? university.location.city === location : true;
+      const matchesType = type ? university.type === type : true;
+      const matchesEstablished = establishedAfter
+        ? university.established >= establishedAfter
+        : true;
+      const matchesRanking = minRanking
+        ? university.ranking && university.ranking >= minRanking
+        : true;
+      const matchesStudentPop = minStudentPop
+        ? university.student_population &&
+          university.student_population >= minStudentPop
+        : true;
+      const matchesPrice =
+        university.tuition.min >= minPrice &&
+        university.tuition.max <= maxPrice;
+      const matchesScholarship = scholarship
+        ? scholarshipData.some((sch) => sch.uni_id.includes(university.id))
+        : true;
+      return (
+        matchesSearch &&
+        matchesLocation &&
+        matchesType &&
+        matchesEstablished &&
+        matchesRanking &&
+        matchesStudentPop &&
+        matchesPrice &&
+        matchesScholarship
+      );
+    });
+  }
+  
+  function updateUniversityGrid(universities) {
+    const universityGrid = document.querySelector(".uni-grid");
+    universityGrid.innerHTML = universityCards(universities);
+  }
+  
+  // Event listeners for filters
+  el.addEventListener("input", () => {
+    const searchTerm = el.querySelector("#searchUni").value;
+    const location = el.querySelector(".location-filter select").value;
+    const type = el.querySelector(".type-filter select").value;
+    const establishedAfter = parseInt(
+      el.querySelector("#establishedSelect").value,
+      10
+    );
+    const minRanking = parseInt(
+      el.querySelector("#rankingSelect").value,
+      10
+    );
+    const minStudentPop = parseInt(
+      el.querySelector("#studentPopulationSelect").value,
+      10
+    );
+    const minPrice = parseInt(el.querySelector("#minPrice").value, 10);
+    const maxPrice = parseInt(el.querySelector("#maxPrice").value, 10);
+    const scholarship = el.querySelector("#scholarshipOnly").checked;
+  
+    const filteredUniversities = filterUniversities(
+      universitiesData,
+      searchTerm,
+      location,
+      type,
+      establishedAfter,
+      minRanking,
+      minStudentPop,
+      minPrice,
+      maxPrice,
+      scholarship
+    );
+    const uniCountSpan = document.querySelector(".uni-count");
+    uniCountSpan.textContent = filteredUniversities.length;
+    updateUniversityGrid(filteredUniversities);
+  });
+  return el;
+}
+
