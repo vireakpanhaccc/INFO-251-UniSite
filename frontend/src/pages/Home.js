@@ -1,11 +1,13 @@
 import universityCards from "../components/universityCards.js";
 import majorCards from "../components/majorCards.js";
 import scholarshipCards from "../components/scholarshipCards.js";
-import { popUniData } from "../data/popUniData.js";
-import { popMajorData } from "../data/popMajorData.js";
-import { popScholarData } from "../data/popScholarData.js";
+import { api } from "../api.js";
 
-export default function Home() {
+
+export default async function Home() {
+  const universities = await api.get('/universities');
+  const majors = await api.get('/majors');
+  const scholarships = await api.get('/opportunities/scholarships');
   const el = document.createElement("div");
   el.innerHTML = `
     <div class="home-cover">
@@ -28,7 +30,7 @@ export default function Home() {
           <a href="#/universities"><button class="text-sm md:text-md h-full">View All</button></a>
         </div>
         <div class="card-container grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 mb-10">
-          ${universityCards(popUniData)}
+          ${universityCards(universities)}
         </div>
       </div>
       <div class="home-popular-majors">
@@ -38,7 +40,7 @@ export default function Home() {
           <a href="#/majors"><button class="text-sm md:text-md h-full">View All</button></a>
         </div>
         <div class="card-container grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 mb-10">
-          ${majorCards(popMajorData)}
+          ${majorCards(majors)}
         </div>
       </div>
       <div class="home-popular-scholarships">
@@ -48,7 +50,7 @@ export default function Home() {
           <a href="#/scholarships"><button class="text-sm md:text-md h-full">View All</button></a>
         </div>
         <div class="card-container grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 mb-10">
-          ${scholarshipCards(popScholarData)}
+          ${scholarshipCards(scholarships)}
           </div>
       </div>
       <div class="home-community text-center">
@@ -64,3 +66,4 @@ export default function Home() {
   `;
   return el;
 }
+

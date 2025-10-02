@@ -3,8 +3,12 @@ import Universities from './pages/Universities.js';
 import UniversityDetails from './pages/UniversityDetails.js';
 import Majors from './pages/Majors.js';
 import Opportunities from './pages/Opportunities.js';
+import OpportunityDetails from './pages/OpportunityDetails.js';
 import Forum from './pages/Forum.js';
 import About from './pages/About.js';
+import Register from './pages/Register.js';
+import Login from './pages/Login.js';
+import ResetPassword from './pages/ResetPassword.js'
 import NotFound from './pages/NotFound.js';
 import header from './components/header.js';
 import footer from './components/footer.js';
@@ -15,25 +19,36 @@ function parseHash() {
   return { route: route || '', id };
 }
 
-export default function router(appEl, headerEl, footerEl) {
+export default async function router(appEl, headerEl, footerEl) {
   let view = null;
   const {route, id} = parseHash();
   switch(route){
-    case '': view = Home(); break;
+    case '': view = await Home(); break;
     case 'universities': 
       if(id) {
-          view = UniversityDetails(id);
-          if (!view) view = NotFound();
+          view = await UniversityDetails(id);
+          if (!view) view = await NotFound();
         break;
       }
       else
-        view = Universities(); 
+        view = await Universities(); 
       break;
-    case 'majors': view = Majors(); break;
-    case 'opportunities': view = Opportunities(); break;
-    case 'forum': view = Forum(); break;
-    case 'about': view = About(); break;
-    default: view = NotFound(); break;
+    case 'majors': view = await Majors(); break;
+    case 'opportunities': 
+      if(id) {
+          view = await OpportunityDetails(id);
+          if (!view) view = await NotFound();
+        break;
+      }
+      else
+        view = await Opportunities(); 
+      break;
+    case 'forum': view = await Forum(); break;
+    case 'about': view = await About(); break;
+    case 'register': view = await Register(); break;
+    case 'login': view = await Login(); break;
+    case 'reset-password': view = await ResetPassword(); break;
+    default: view = await NotFound(); break;
   }
   appEl.innerHTML = '';
   headerEl.innerHTML = '';

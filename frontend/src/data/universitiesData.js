@@ -67,7 +67,6 @@ export const universitiesData = [
       cover: "./images/pic/universities/cover/AUPP-Building.jpg",
       albums: ['']
     },
-    scholarships: ["Merit Scholarship", "Need-Based Scholarship"],
     last_updated: "2024-06-01"
   },
   {
