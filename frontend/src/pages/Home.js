@@ -47,7 +47,7 @@ export default async function Home() {
         <div class="title-with-hr flex items-center gap-3 mb-6">
           <h1 class="text-xl md:text-2xl font-bold text-[#2c3e50ec]">Popular Scholarships</h1>
           <hr class="flex-1 border-0 bg-[#2c3e50ec] h-1 rounded-sm">
-          <a href="#/scholarships"><button class="text-sm md:text-md h-full">View All</button></a>
+          <a href="#/opportunities"><button class="text-sm md:text-md h-full">View All</button></a>
         </div>
         <div class="card-container grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 mb-10">
           ${scholarshipCards(scholarships)}
