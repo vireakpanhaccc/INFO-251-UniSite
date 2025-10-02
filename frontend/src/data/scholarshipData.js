@@ -2,7 +2,7 @@
 export const scholarshipData =[
   {
     id: 1,
-    uni_id: ['uni-001'],
+    uni_id: ['uni-001', 'uni-002'],
     name: "AUPP Merit Scholarship",
     provider: "American University of Phnom Penh",
     cover_image: "./images/pic/universities/cover/aupp_merit_scholarship.jpg",

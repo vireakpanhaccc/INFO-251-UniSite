@@ -76,12 +76,41 @@ export const universitiesData = [
     aliases: ["RUPP"],
     location: {
       city: "Phnom Penh",
-      address: "",
-      map: ""
+      address: "Russian Federation Blvd (110), Phnom Penh 120404",
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2651.649324573174!2d104.88816677280163!3d11.568681244085747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109519fe4077d69%3A0x20138e822e434660!2sRoyal%20University%20of%20Phnom%20Penh!5e1!3m2!1sen!2skh!4v1758380535802!5m2!1sen!2skh"
     },
+   events:[
+      { id: "uni-002-1",
+        title: "Distinguished Talk on MATERIALS FOR THE FUTURE Shaping Science, Technology and Society",
+        date: "08 September 2025",
+        time: "9:00 AM  - 10:30 AM",
+        location: "RUPP Campus",
+        image: "./images/pic/universities/event/rupp-distinguised-talk.jpg",
+        description: "The Royal University of Phnom Penh is pleased to co-host a distinguished talk by Prof. Dr. Konstantin Novoselov, Nobel Laureate in Physics (2010)",
+        link: "https://rupp.edu.kh/news/index.php?display=173"
+      },
+      { id: "uni-002-2",
+        title: "Job Fair 2024",
+        date: "28 July 2024",
+        time: "8:00 AM - 5:00 PM",
+        location: "CJCC",
+        image: "./images/pic/universities/event/rupp-Job-Fair-2024.jpg",
+        description: "ជួបគ្នាជាថ្មីនៅក្នុងកម្មវិធី CJCC ពិព័រណ៏ការងារ ខែកក្កដា ឆ្នាំ២០២៤  ដែលរៀបចំឡើងដោយ មជ្ឈមណ្ឌលសហប្រតិបត្ដិការកម្ពុជា-ជប៉ុន (CJCC)",
+        link: "https://rupp.edu.kh/news/index.php?display=170"
+      },
+      { id: "uni-002-3",
+        title: "Workshop on the 21st Century Skills - Leadership Mindset",
+        date: "23 November 2023",
+        time: "1:00 AM - 3:00 PM",
+        location: "Online",
+        image: "./images/pic/universities/event/rupp-workshop_leadership_activities_01.png",
+        description: "On 23 November 2023, RUPP conducted workshop on the 21st Century Skills - Leadership Mindset to students, companies staffs, teachers, and school principles (in Cambodia).",
+        link: "https://rupp.edu.kh/news/index.php?display=168"
+      }
+    ],
     contact: {
-      phone: "",
-      email: ""
+      phone: "023 883 640",
+      email: "info@rupp.edu.kh"
     },
     website: "http://www.rupp.edu.kh/",
     type: "Public",
@@ -99,9 +128,9 @@ export const universitiesData = [
     description: "The largest and oldest university in Cambodia.",
     student_population: null,
     campus: {
-      size: ""
+      size: "10 acres"
     },
-    accreditation: "",
+    accreditation: "Accredited by the Cambodian Ministry of Education, Youth and Sport",
     ranking: 4,
     images: {
       logo: "./images/pic/universities/logo/rupp.png",
@@ -110,18 +139,49 @@ export const universitiesData = [
     scholarships: ["RUPP Excellence Scholarship", "RUPP Sports Scholarship"],
     last_updated: "2024-06-01"
   },
+  
   {
     id: "uni-003",
     name: "Institute of Technology of Cambodia",
     aliases: ["ITC"],
     location: {
       city: "Phnom Penh",
-      address: "",
-      map: ""
+      address: "Russian Conf Norodom Boulevard, Phnom Penh 120404",
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2651.6330146401256!2d104.8955107728016!3d11.570402744051778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109517388680e15%3A0x63057e6682968f5!2sInstitute%20of%20Technology%20of%20Cambodia!5e1!3m2!1sen!2skh!4v1758382752773!5m2!1sen!2skh"
     },
+    events:[
+      { id: "uni-003-1",
+        title: "សេចក្តីជូនដំណឹងថ្មី ស្តីពីការជ្រើសរើសនិស្សិតចូលរៀន កម្រិតបរិញ្ញាបត្ររង",
+        date: "26 Sep - 07 Nov 2025",
+        time: "1:00 PM  - 5:00 PM",
+        location: "ITC Campus",
+        image: "./images/pic/universities/event/itc-recruite_new_strudents_25-26.jpg",
+        description: "សេចក្តីជូនដំណឹង(ថ្មី) ស្តីពីការជ្រើសរើសនិស្សិតចូលរៀន កម្រិតបរិញ្ញាបត្ររង (មិនប្រឡង) នៅសាលាតិចណូ ភ្នំពេញ សម្រាប់ឆ្នាំសិក្សា​2025-2026",
+        link: "https://itc.edu.kh/newsevent/%e1%9e%9f%e1%9f%81%e1%9e%85%e1%9e%80%e1%9f%92%e1%9e%8f%e1%9e%b8%e1%9e%87%e1%9e%bc%e1%9e%93%e1%9e%8a%e1%9f%86%e1%9e%8e%e1%9e%b9%e1%9e%84%e1%9e%90%e1%9f%92%e1%9e%98%e1%9e%b8-%e1%9e%9f%e1%9f%92-3/"
+      },
+      { id: "uni-003-2",
+        title: "កម្មវិធីសិក្សាកម្រិតវិស្វករនៃមហាវិទ្យាល័យវារីសាស្ត្រ",
+        date: "5 November 2024",
+        time: "10:00 AM - 12:00 PM",
+        location: "ITC Campus",
+        image: "./images/pic/universities/event/itc-new_programme.png",
+        description: "កម្មវិធីសិក្សាកម្រិតវិស្វករនៃមហាវិទ្យាល័យវារីសាស្ត្រ",
+        link: "http://127.0.0.1:5501/frontend/public/index.html#/universities/uni-003"
+      },
+      { id: "uni-003-3",
+        title: "សេចក្តីជូនដំណឹងថ្មី ស្តីពីការប្រឡងជ្រើសរើសនិស្សិតចូលរៀនឆ្នាំទី១",
+        date: "25 Sep - 11 Oct 2025",
+        time: "9:00 AM - 4:00 PM",
+        location: "ITC Campus",
+        image: "./images/pic/universities/event/itc-student-recruitment-25-26.jpg",
+        description: "សេចក្តីជូនដំណឹង(ថ្មី) ស្តីពីការប្រឡងជ្រើសរើស និស្សិតចូលរៀនឆ្នាំទី១ កម្រិតវិស្វករ នៅសាលាតិចណូភ្នំពេញ",
+        link: "https://itc.edu.kh/newsevent/%e1%9e%9f%e1%9f%81%e1%9e%85%e1%9e%80%e1%9f%92%e1%9e%8f%e1%9e%b8%e1%9e%87%e1%9e%bc%e1%9e%93%e1%9e%8a%e1%9f%86%e1%9e%8e%e1%9e%b9%e1%9e%84%e1%9e%90%e1%9f%92%e1%9e%98%e1%9e%b8-%e1%9e%9f%e1%9f%92/"
+      }
+    ],
+
     contact: {
-      phone: "",
-      email: ""
+      phone: "023880370",
+      email: "graduate@itc.edu.kh"
     },
     website: "https://itc.edu.kh/?amp",
     type: "Public",
@@ -141,7 +201,7 @@ export const universitiesData = [
     campus: {
       size: ""
     },
-    accreditation: "",
+    accreditation: "Accredited by the Cambodian Ministry of Education, Youth and Sport",
     ranking: 4,
     images: {
       logo: "./images/pic/universities/logo/itc.png",
@@ -156,12 +216,42 @@ export const universitiesData = [
     aliases: ["CADT"],
     location: {
       city: "Phnom Penh",
-      address: "",
-      map: ""
+      address: "2nd Bridge Prek Leap, National Road Number 6, Phnom Penh 12252",
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10603.400385671805!2d104.9021236790243!3d11.652744081592994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109516bdea989b3%3A0x372d2c5e0e14b706!2sCambodia%20Academy%20of%20Digital%20Technology%20(CADT)!5e1!3m2!1sen!2skh!4v1758385782138!5m2!1sen!2skh"
     },
+      events:[
+      { id: "uni-004-1",
+        title: "Conference on Information Technology and its Applications 2025",
+        date: "14,15 July 2025",
+        time: "8:00 AM  - 5:00 PM",
+        location: "CADT Campus",
+        image: "./images/pic/universities/event/cadt-cita.png",
+        description: "CITA 2025 will be co-organized by Vietnam-Korea University of Information and Communication Technology (Vietnam), Cambodia Academy of Digital Technology (Cambodia) and King Mongkut’s University of Technology North Bangkok (Thailand).",
+        link: "https://cadt.edu.kh/cita-2025/"
+      },
+      { id: "uni-004-2",
+        title: "DIGITAL INSIGHTS – THE FUTURE OF EDUCATION",
+        date: "21 November 2023",
+        time: "5:00 AM - 9:00 PM",
+        location: "The TRIBE Hotel",
+        image: "./images/pic/universities/event/cadt-digital_insight.png",
+        description: "This year´s edition of Digital Insights was compiled to analyze all these topics and shed light on the state of digitalization in the educational system in Cambodia and the region.",
+        link: "https://cadt.edu.kh/digital-insights-the-future-of-education/"
+      },
+      { id: "uni-004-3",
+        title: "CADT Open House",
+        date: "29 September 2025",
+        time: "1:30 PM - 5:30 PM",
+        location: "CADT Campus",
+        image: "./images/pic/universities/event/cadt-open-houese.jpg",
+        description: "Open House Week will allow students interested in learning more about our Bachelor’s Programs in Digital Business, Computer Science, and Telecoms & Networking to visit our campus.",
+        link: "https://cadt.edu.kh/cadt-open-house/"
+      }
+
+    ],
     contact: {
-      phone: "",
-      email: ""
+      phone: "010340000",
+      email: "pr@cadt.edu.kh"
     },
     website: "http://www.cadt.edu.kh/",
     type: "Private",
@@ -196,12 +286,42 @@ export const universitiesData = [
     aliases: ["Zaman University"],
     location: {
       city: "Phnom Penh",
-      address: "",
-      map: ""
+      address: "អាគារលេខ ៨, សង្កាត់បឹងកក់១, St 315, Phnom Penh",
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2651.5192077400693!2d104.8954066728019!3d11.582407943815067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109517bf7757d23%3A0x965c34888684bf1!2sParagon%20International%20University!5e1!3m2!1sen!2skh!4v1758387590321!5m2!1sen!2skh"
     },
+      events:[
+      { id: "uni-005-1",
+        title: "Scholarships Offering to Students Returning from Thailand",
+        date: "31 August 2025",
+        time: "8:00 AM  - 5:00 PM",
+        location: "Paragon Campus",
+        image: "./images/pic/universities/event/paragon-scholarship_for_students.png",
+        description: "Paragon International University has announced scholarships of up to 100% for Cambodian students returning from Thailand due to the recent Cambodia–Thailand border conflict.",
+        link: "https://paragoniu.edu.kh/paragon-international-university-offers-up-to-100-scholarships-for-students-returning-from-thailand/"
+      },
+      { id: "uni-005-2",
+        title: "The Department of Civil Engineering Scholarship is open!",
+        date: "18 September 2025",
+        time: "8:00 AM  - 5:00 PM",
+        location: "Paragon Campus",
+        image: "./images/pic/universities/event/paragon-new_department.jpg",
+        description: "Department of Civil Engineering at Paragon International University is calling for applications for the 2025 Departmental Scholarship with scholarship offered up to 100% for all high school graduates.",
+        link: "https://paragoniu.edu.kh/the-department-of-civil-engineering-scholarship-is-open/"
+      },
+      { id: "uni-005-3",
+        title: "សាកលវិទ្យាល័យអន្តរជាតិ​ ផារ៉ាហ្គន ប្រកាសផ្ដល់អាហារូបករណ៍ផ្អែកលើនិទ្ទេស",
+        date: "1,2 October 2025",
+        time: "8:00 AM - 5:00 PM",
+        location: "Paragon Campus",
+        image: "./images/pic/universities/event/paragon-scholarship.png",
+        description: "Connect with top employers at the AUPP Career Fair 2024. Bring your resume and prepare for on-the-spot interviews.",
+        link: "https://www.aupp.edu.kh/events/career-fair-2024"
+      }
+
+    ],
     contact: {
-      phone: "",
-      email: ""
+      phone: "023996111",
+      email: "admission@paragoniu.edu.kh"
     },
     website: "https://zamanuniversity.edu.kh/",
     type: "Private",
@@ -219,9 +339,9 @@ export const universitiesData = [
     description: "A private university offering diverse programs.",
     student_population: null,
     campus: {
-      size: ""
+      size: "10 acres"
     },
-    accreditation: "",
+    accreditation: "Accredited by the Cambodian Ministry of Education, Youth and Sport",
     ranking: 3,
     images: {
       logo: "./images/pic/universities/logo/paragon.jpg",
@@ -236,12 +356,42 @@ export const universitiesData = [
     aliases: ["Norton"],
     location: {
       city: "Phnom Penh",
-      address: "",
-      map: ""
+      address: "Keo Chenda St, Phnom Penh 12000",
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2651.465055258031!2d104.927545572802!3d11.588116043702447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310953fd9f9a51e9%3A0xc26eafcd2ed5ca29!2sNorton%20University!5e1!3m2!1sen!2skh!4v1758464061240!5m2!1sen!2skh"
     },
+    events:[
+      { id: "uni-006-1",
+        title: "ដំណើរទស្សនកិច្ចសិក្សាទៅកាន់ខេត្តមណ្ឌលគីរី",
+        date: "3 August 2023",
+        time: "1:00 PM  - 5:00 PM",
+        location: "Modulkiri",
+        image: "./images/pic/universities/event/norton-school_trip.webp",
+        description: "គណៈគ្រប់គ្រង សាស្រ្តាចារ្យ និងបុគ្គលិកផ្នែកពាណិជ្ជសាស្រ្ត និងវិទ្យាសាស្រ្តសេដ្ឋកិច្ចបានដឹកនាំនិស្សិតចុះទស្សនកិច្ចសិក្សាទៅកាន់ខេត្តមណ្ឌលគីរីកាលពីថ្ងៃទី៣១ ខែមិនា ដល់ ថ្ងៃទី០២ ខែមេសា ឆ្នាំ២០២៣ ដែលមានចំនួន ២យប់ ៣ថ្ងៃ។",
+        link: "https://blog.norton-u.com/article/88"
+      },
+      { id: "uni-006-2",
+        title: "និស្សិតន័រតុនចូលរួមប្រកួតប្រជែង ក្នុងកម្មវិធី CAMEL’s Future Engineer Program",
+        date: "18 September 2024",
+        time: "10:00 AM - 12:00 PM",
+        location: "Norton Campus",
+        image: "./images/pic/universities/event/norton-competition.webp",
+        description: "ថ្ងៃទី១៨ ខែកញ្ញា ឆ្នាំ២០២៤  ជាវគ្គប្រកួតប្រជែង ក្នុងកម្មវិធី CAMEL’s Future Engineer Program  ដែលរៀបចំឡើង ដោយក្រុមហ៊ុនផលិតស៊ីម៉ង៍ ជីប ម៉ុង អុិនស៊ី ស៊ីមេន ដោយមានការចូលរួមពីសាកលវិទ្យាល័យចំនួន ៥។",
+        link: "https://blog.norton-u.com/article/89"
+      },
+      { id: "uni-006-3",
+        title: "Russia XXVIII Moscow International Salon of Inventions and Innovative Technologies",
+        date: "18, 20 March 2025",
+        time: "9:00 AM - 4:00 PM",
+        location: "Moscow, Russia",
+        image: "./images/pic/universities/event/norton-moscow.webp",
+        description: "និស្សិតផ្នែកស្ថាបត្យកម្ម ផ្នែកអគ្គីសនី និងផ្នែកកុំព្យូទ័រវិទ្យា នៃសាកលវិទ្យាល័យន័រតុន បានចូលរួមកម្មវិធីគំនិតច្នៃប្រឌិត និងការបង្កើតថ្មីនៅទីក្រុងMocow ប្រទេសRussia ក្នុងកម្មវិធីឈ្មោះ XXVIII Moscow International Salon of Inventions and Innovative Technologies (ARCHIMEDES - 2025) ",
+        link: "https://blog.norton-u.com/article/90"
+      }
+
+    ],
     contact: {
-      phone: "",
-      email: ""
+      phone: "023432075",
+      email: "info@norton-u.com"
     },
     website: "https://www.norton-u.com/",
     type: "Private",
@@ -261,7 +411,7 @@ export const universitiesData = [
     campus: {
       size: ""
     },
-    accreditation: "",
+    accreditation: "Accredited by the Cambodian Ministry of Education, Youth and Sport",
     ranking: 4,
     images: {
       logo: "./images/pic/universities/logo/norton.png",
@@ -276,12 +426,42 @@ export const universitiesData = [
     aliases: ["PUC"],
     location: {
       city: "Phnom Penh",
-      address: "",
-      map: ""
+      address: "Lot 10, Alley of, 144C Preah Norodom Blvd (41), Phnom Penh",
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48395.5452753364!2d104.85928378639544!3d11.569518147787852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109512fa7280c61%3A0x31ecb11eb27a35cc!2zUGHDscOxxIFzxIFzdHJhIFVuaXZlcnNpdHkgb2YgQ2FtYm9kaWE!5e1!3m2!1sen!2skh!4v1758466497270!5m2!1sen!2skh"
     },
+    events:[
+      { id: "uni-007-1",
+        title: "Education Fair 2025 & Scholarship",
+        date: "4 October 2025",
+        time: "8:00 AM  - 5:00 PM",
+        location: "PUC Toul Kork Campus",
+        image: "./images/pic/universities/event/puc-edu_job_fair.jpg",
+        description: "Full Scholarship Announcement for the students!",
+        link: "https://www.puc.edu.kh/scholarship-announcement/education-fair-2025-scholarship-09-2025/"
+      },
+      { id: "uni-007-2",
+        title: "Fully-Covered Scholarship Announcement for PUC Students!",
+        date: "17 August 2025",
+        time: "8:00 AM - 5:00 PM",
+        location: "PUC Campus",
+        image: "./images/pic/universities/event/puc-japan_scholarship.jpg",
+        description: "Under the mutual cooperation between Paññāsāstra University of Cambodia (PUC) and Teikyo University (TU) on Student Exchange, now we are pleased to announce the fully-funded scholarship for our 2 PUC students",
+        link: "https://www.puc.edu.kh/tokyo/fully-covered-scholarship-announcement-for-puc-students-08-2025/"
+      },
+      { id: "uni-007-3",
+        title: "5-Month-Student Exchange Program to the University of A Coruña (UDC), Spain",
+        date: "9 June 2025",
+        time: "8:00 AM - 5:00 PM",
+        location: "PUC Campus",
+        image: "./images/pic/universities/event/puc-spain_exchange_programme.png",
+        description: "កម្មវិធីផ្លាស់ប្តូរការសិក្សាទៅកាន់សាកលវិទ្យាល័យ THE UNIVERSITY OF A CORUÑA (UDC) ប្រទេសអេស្ប៉ាញ បានមកដល់ទៀតហើយ សម្រាប់និស្សិតនៃសាកលវិទ្យាល័យបញ្ញាសាស្រ្តកម្ពុជា",
+        link: "https://www.aupp.edu.kh/events/career-fair-2024"
+      }
+
+    ],
     contact: {
-      phone: "",
-      email: ""
+      phone: "023993956",
+      email: "info@puc.edu.kh"
     },
     website: "https://www.puc.edu.kh/",
     type: "Private",
@@ -301,7 +481,7 @@ export const universitiesData = [
     campus: {
       size: ""
     },
-    accreditation: "",
+    accreditation: "Accredited by the Cambodian Ministry of Education, Youth and Sport",
     ranking: 4,
     images: {
       logo: "./images/pic/universities/logo/PUC_Logo.png",
@@ -316,12 +496,42 @@ export const universitiesData = [
     aliases: ["UC"],
     location: {
       city: "Phnom Penh",
-      address: "",
-      map: ""
+      address: "វិថី ណតប្រ៊ីតដ៍, ភូមិ ស្លែងរលឹង, សង្កាត់ ទឹកថ្លា រាជធានី​ភ្នំពេញ, 12102",
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2651.747502097308!2d104.86851047280142!3d11.558313344289944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310951b83795d97b%3A0x735f8f7a3e5bc507!2sThe%20University%20of%20Cambodia!5e1!3m2!1sen!2skh!4v1759111542508!5m2!1sen!2skh"
     },
+    events:[
+      { id: "uni-008-1",
+        title: "Open House",
+        date: "3 October 2025",
+        time: "8:00 PM  - 10:00 AM",
+        location: "UC Campus",
+        image: "./images/pic/universities/event/uc-open_house.jpg",
+        description: "សាកលវិទ្យាល័យកម្ពុជានឹងរៀបចំកម្មវិធី ស្វាគមន៍ឆ្នាំសិក្សាថ្មី (Open House) ដែលនឹងប្រព្រឹត្តទៅនៅថ្ងៃទី៣ ខែតុលា ឆ្នាំ២០២៥ខាងមុខនេះ។",
+        link: "https://www.facebook.com/photo?fbid=1249847753848676&set=a.557667303066728"
+      },
+      { id: "uni-008-2",
+        title: "SFL Department(School of Foerign Language) Academic Programs",
+        date: "25 September 2025",
+        time: "8:00 AM - 5:00 PM",
+        location: "UC Campus",
+        image: "./images/pic/universities/event/Explore-UA-at-AUPP-Info-Networking-Session.jpg",
+        description: "Celebrate International Education Week with us! Attend seminars on global education trends and opportunities.",
+        link: "https://www.aupp.edu.kh/events/international-education-week"
+      },
+      { id: "uni-008-3",
+        title: "Exploring FHSU Info and Networking Session",
+        date: "15 October 2024",
+        time: "9:00 AM - 4:00 PM",
+        location: "AUPP Gymnasium",
+        image: "./images/pic/universities/event/Exploring-FHSU-Event.jpg",
+        description: "Connect with top employers at the AUPP Career Fair 2024. Bring your resume and prepare for on-the-spot interviews.",
+        link: "https://www.aupp.edu.kh/events/career-fair-2024"
+      }
+
+    ],
     contact: {
-      phone: "",
-      email: ""
+      phone: "023993276",
+      email: " info@uc.edu.kh"
     },
     website: "https://uc.edu.kh/",
     type: "Private",
@@ -341,7 +551,7 @@ export const universitiesData = [
     campus: {
       size: ""
     },
-    accreditation: "",
+    accreditation: "Accredited by the Cambodian Ministry of Education, Youth and Sport",
     ranking: 3,
     images: {
       logo: "./images/pic/universities/logo/uc.png",
@@ -356,12 +566,42 @@ export const universitiesData = [
     aliases: ["BBU"],
     location: {
       city: "Phnom Penh",
-      address: "",
-      map: ""
+      address: "Samdach Sothearos Blvd (3), Phnom Penh",
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21214.269668136432!2d104.89781401083984!3d11.554487500000015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31095132064d579f%3A0x4893f37adc6c5f92!2sBuild%20Bright%20University!5e1!3m2!1sen!2skh!4v1759113553529!5m2!1sen!2skh",
     },
+    events:[
+      { id: "uni-009-1",
+        title: "ចុះទស្សនកិច្ចសិក្សា នៅក្នុង vKirirom Pine Resort",
+        date: "9 August 2025",
+        time: "8:00 PM  - 10:00 AM",
+        location: "Kampong Speu",
+        image: "./images/pic/universities/event/bbu-field_trip.avif",
+        description: "នៅថៃ្ងទី៩ ខែសីហា ឆ្នាំ២០២៥ និស្សិតមហាវិទ្យាល័យវិទ្យាសាស្រ្តនិងបច្ចេកវិទ្យា នៃសាកលវិទ្យាល័យបៀលប្រាយ សរុបចំនួន៧១នាក់ ទៅឧទ្យានជាតិគីរីរម្យ ខេត្តកំពង់ស្ពឺ  បានចុះទស្សនកិច្ចសិក្សា",
+        link: "https://web.bbu.edu.kh/Visit-to-study-and-understand-the-information-technology-network-and-operation-management-system-in-the-hotel-tourism-sector-at-vKirirom-Pine-Resort-401"
+      },
+      { id: "uni-009-2",
+        title: "បវេសនកាលថ្មី! ឆ្នាំសិក្សា២០២៥-២០២៦ ជំនាន់ទី២៦",
+        date: "15 October 2025",
+        time: "8:00 AM - 5:00 PM",
+        location: "BBU Campus",
+        image: "./images/pic/universities/event/bbu-new_semester.avif",
+        description: "សិស្សានុសិស្សទាំងអ្នកជាប់បាក់ឌុប និងធ្លាក់បាក់ឌុប អាចបន្តការសិក្សាកម្រិតបរិញ្ញាបត្ររង និងបរិញ្ញាបត្រ សិក្សានៅសាកលវិទ្យាល័យបៀលប្រាយ",
+        link: "https://web.bbu.edu.kh/New-Year-Academic-Year-2025-2026-26th-Generation-Build-Bright-University-all-9-provincial-and-capital-branches-welcome-392"
+      },
+      { id: "uni-009-3",
+        title: "អាហារូបករណ៍សិក្សា១០០% ជូនដល់កូនៗ របស់យោធិនពលីជីវិត ដើម្បីបុព្វហេតុការពារជាតិ",
+        date: "15 October 2024",
+        time: "9:00 AM - 4:00 PM",
+        location: "AUPP Gymnasium",
+        image: "./images/pic/universities/event/Exploring-FHSU-Event.jpg",
+        description: "Connect with top employers at the AUPP Career Fair 2024. Bring your resume and prepare for on-the-spot interviews.",
+        link: "https://www.aupp.edu.kh/events/career-fair-2024"
+      }
+    ],
+
     contact: {
-      phone: "",
-      email: ""
+      phone: "023987700",
+      email: "info@bbu.edu.kh"
     },
     website: "https://www.bbu.edu.kh/",
     type: "Private",
@@ -381,7 +621,7 @@ export const universitiesData = [
     campus: {
       size: ""
     },
-    accreditation: "",
+    accreditation: "Accredited by the Cambodian Ministry of Education, Youth and Sport",
     ranking: 3,
     images: {
       logo: "./images/pic/universities/logo/bbu_logo.jpg",
@@ -421,7 +661,7 @@ export const universitiesData = [
     campus: {
       size: ""
     },
-    accreditation: "",
+    accreditation: "Accredited by the Cambodian Ministry of Education, Youth and Sport",
     ranking: 3,
     images: {
       logo: "./images/pic/universities/logo/aeu.png",
