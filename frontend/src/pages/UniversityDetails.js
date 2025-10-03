@@ -8,11 +8,19 @@ import { api } from '../api.js';
 
 
 export default async function UniversityDetails(uni_id) {
-  const universities = await api.get('/universities');
+  let university;
+  try {
+    university = await api.get(`/universities/${uni_id}`);
+  } catch (err) {
+    if (err.status === 401 || err.status === 403) {
+      window.location.href = '/login';
+      return;
+    }
+    throw err;
+  }
   const el = document.createElement('div');
-  const university = universities.find(uni => uni._id === uni_id);
-  const scholarships = scholarshipData.filter(sch => sch.uni_id.includes(university.id));
-  const programs = programsData.filter(prog => prog.uni_id === university.id);
+  const scholarships = scholarshipData.filter(sch => sch.uni_id.includes(university._id));
+  const programs = programsData.filter(prog => prog.uni_id === university._id);
   if (!university) return null;
   el.innerHTML = `
     <div class="university-page flex flex-col gap-4">

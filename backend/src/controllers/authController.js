@@ -1,5 +1,4 @@
 
-const express = require('express');
 const { db } = require('../config/mongoClient');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -67,7 +66,7 @@ const Login = async (req, res) => {
       { expiresIn: '7d' }
     );
 
-    res.status(200).json({ token, refreshToken, message: 'Login successful' });
+    res.status(200).json({ user, token, refreshToken, message: 'Login successful' });
   } catch (error) {
     console.error('Error during login:', error);
     res.status(500).json({ message: 'Internal server error' });

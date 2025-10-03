@@ -2,40 +2,41 @@ const {db} = require("../config/mongoClient");
 
 const getPopularUniversities = async (req, res) => {
   try {
-    const popularUniversities = await db.collection("universities")
+    const universities = await db.collection("universities")
       .find({})
-      .sort({ popularityScore: -1 })
-      .limit(3)
+      .sort({ ranking: -1 })
+      .limit(4)
       .toArray();
-    res.json({ popularUniversities });
+    res.status(200).json(universities);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch popular universities" });
+    console.error("Error fetching universities:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
 const getPopularMajors = async (req, res) => {
   try {
-    const popularMajors = await db.collection("majors")
+    const majors = await db.collection("majors")
       .find({})
-      .sort({ popularityScore: -1 })
-      .limit(3)
+      .limit(4)
       .toArray();
-    res.json({ popularMajors });
+    res.status(200).json(majors);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch popular majors" });
+    console.error("Error fetching majors:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
 const getPopularScholarships = async (req, res) => {
   try {
-    const popularScholarships = await db.collection("scholarships")
+    const scholarships = await db.collection("scholarships")
       .find({})
-      .sort({ popularityScore: -1 })
-      .limit(3)
+      .limit(4)
       .toArray();
-    res.json({ popularScholarships });
+    res.status(200).json(scholarships);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch popular scholarships" });
+    console.error("Error fetching scholarships:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 

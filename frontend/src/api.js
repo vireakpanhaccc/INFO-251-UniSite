@@ -21,7 +21,7 @@ export function clearTokens() {
 // Core request function
 async function request(method, path, { body, headers } = {}) {
   const token = getAccessToken();
-
+  
   let res = await fetch(`${BASE_URL}${path}`, {
     method,
     headers: {
@@ -46,10 +46,6 @@ async function request(method, path, { body, headers } = {}) {
         body: body ? JSON.stringify(body) : undefined,
       });
     }
-  }
-
-  if (!res.ok) {
-    throw new Error(`API error: ${res.status}`);
   }
 
   return res.json();

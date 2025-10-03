@@ -11,11 +11,11 @@ export default async function Login() {
         <form class="space-y-5" autocomplete="off">
           <div>
             <label for="email" class="block mb-1 text-sm font-medium text-gray-700">Email</label>
-            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+            <input autoComplete="email" type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           </div>
           <div>
             <label for="password" class="block mb-1 text-sm font-medium text-gray-700">Password</label>
-            <input type="password" id="password" name="password" required class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+            <input autoComplete="current-password" type="password" id="password" name="password" required class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
           </div>
           <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Login</button>
         </form>
@@ -49,8 +49,10 @@ export default async function Login() {
       if (response.token) {
         localStorage.setItem("token", response.token);
         localStorage.setItem("refreshToken", response.refreshToken);
+        localStorage.setItem("user_profile", JSON.stringify(response.user));
         alert("Login successful!");
         window.location.hash = "#/"; // Redirect to home or dashboard
+        window.location.reload();
       } else {
         alert("Login failed: " + (response.message || "Unknown error"));
       }

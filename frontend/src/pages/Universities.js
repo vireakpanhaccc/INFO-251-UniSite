@@ -1,9 +1,17 @@
 import { locations} from "../data/filterData.js";
-import {universitiesData} from "../data/universitiesData.js";
 import universityCards from "../components/universityCards.js";
 import { scholarshipData } from "../data/scholarshipData.js";
+import { api } from "../api.js";
 
-export default function Universities() {
+export default async function Universities() {
+  const universitiesData = [];
+  
+  try {
+    const res = await api.get("/universities");
+    if (res && Array.isArray(res)) {
+      universitiesData.push(...res);
+    }
+  } catch (error) {}
   const universityGrid = universityCards(universitiesData);
   const el = document.createElement("div");
   el.innerHTML = `
