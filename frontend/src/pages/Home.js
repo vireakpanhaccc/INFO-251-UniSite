@@ -5,9 +5,9 @@ import { api } from "../api.js";
 
 
 export default async function Home() {
-  const universities = await api.get('/universities');
-  const majors = await api.get('/majors');
-  const scholarships = await api.get('/opportunities/scholarships');
+  const universities = await api.get('/home/popular/universities');
+  const majors = await api.get('/home/popular/majors');
+  const scholarships = await api.get('/home/popular/scholarships');
   const el = document.createElement("div");
   el.innerHTML = `
     <div class="home-cover">

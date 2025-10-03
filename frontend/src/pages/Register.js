@@ -1,5 +1,5 @@
 
-
+import {api} from "../api.js";
 
 export default async function Register() {
   const el = document.createElement('div');
@@ -40,5 +40,24 @@ export default async function Register() {
       </div>
     </div>
   `;
+  const form = el.querySelector("form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    try {
+      const response = await api.post("/auth/register");
+      if (response.success) {
+        alert("Registration successful! Please log in.");
+        window.location.hash = "#/login"; // Redirect to login page
+      } else {
+        alert("Registration failed: " + (response.message || "Unknown error"));
+      }
+      console.log("Response:", response);
+    } catch (error) {
+      alert("Registration error: " + error.message);
+    }
+  });
   return el;
 }

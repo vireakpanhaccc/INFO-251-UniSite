@@ -11,6 +11,10 @@ import ResetPassword from './pages/ResetPassword.js'
 import NotFound from './pages/NotFound.js';
 import header from './components/header.js';
 import footer from './components/footer.js';
+import {api} from './api.js';
+
+const user_profile = localStorage.getItem('user_profile') ? JSON.parse(localStorage.getItem('user_profile')) : null;
+console.log(user_profile);
 
 function parseHash() {
   const h = location.hash || '#/';
@@ -45,6 +49,6 @@ export default async function router(appEl, headerEl, footerEl) {
   headerEl.innerHTML = '';
   footerEl.innerHTML = '';
   if(view) appEl.appendChild(view);
-  if(headerEl) headerEl.appendChild(header());
+  if(headerEl) headerEl.appendChild(header(user_profile));
   if(footerEl) footerEl.appendChild(footer());
 }

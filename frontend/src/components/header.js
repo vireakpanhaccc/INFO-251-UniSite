@@ -1,5 +1,6 @@
 
-export default function header(){
+
+export default function header(user_profile){
   const el = document.createElement('div');
   el.innerHTML = `
     <div class="bg-white border-b border-gray-300  fixed top-0 w-full z-[1000] shadow-md">
@@ -19,14 +20,15 @@ export default function header(){
           <div class="flex items-center gap-4">
             <div class="flex items-center justify-between gap-4 relative">
               <!-- Profile Button -->
+              
               <button id="profile-btn">
-                <img src="./images/icon/my-profile.jpg" alt="user_profile" class="size-8 active:brightness-80 active:scale-90 border border-gray-300 rounded-full box-shadow-sm" />
+                <img src="./images/icon/user.png" alt="user_profile" class="size-8 active:brightness-80 active:scale-90 border border-gray-300 rounded-full box-shadow-sm" />
               </button>
               <!-- Dropdown Menu -->
               <div id="profile-menu" class="hidden absolute top-0 right-0 mt-12 w-48 bg-white shadow-lg rounded-md overflow-hidden border border-gray-200 text-sm">
                 <a href="#/profile" class="flex items-center gap-3 py-2 px-3 hover:bg-blue-200 active:brightness-90 text-[#2c3e50ec]"><img class="size-4" src="./images/icon/user.png" alt=""><p>Your profile</p></a>
                 <a href="#/settings" class="flex items-center gap-3 py-2 px-3 hover:bg-blue-200 active:brightness-90 text-[#2c3e50ec]"><img class="size-4" src="./images/icon/settings.png" alt=""><p>Settings</p></a>
-                <a href="#/signout" class="flex items-center gap-3 py-2 px-3 hover:bg-blue-200 active:brightness-90 text-[#2c3e50ec]"><img class="size-4" src="./images/icon/exit.png" alt=""><p>Sign out</p></a>
+                <a href="#/" id="signout" class="flex items-center gap-3 py-2 px-3 hover:bg-blue-200 active:brightness-90 text-[#2c3e50ec]"><img class="size-4" src="./images/icon/exit.png" alt=""><p>Sign out</p></a>
               </div>
               <!-- Mobile Menu Button -->
               <div class="h-6 border-l border-gray-300 md:hidden"></div>
@@ -50,9 +52,21 @@ export default function header(){
       </nav>
     </div>
   `;
+
+
+if(user_profile){
+  // Remove sign out and profile menu if not needed
+  const signoutBtn = el.querySelector('#signout');
+  if (signoutBtn) {
+    signoutBtn.style.display = '';
+  }
+  const profileMenu = el.querySelector('#profile-menu');
+  if (profileMenu) {
+    profileMenu.style.display = '';
+  }
+
   // Header Menu toggle
   const profileBtn = el.querySelector('#profile-btn');
-  const profileMenu = el.querySelector('#profile-menu');
   
   profileBtn.addEventListener('click', () => {
     profileMenu.classList.toggle('hidden');
@@ -65,7 +79,7 @@ export default function header(){
   mobileMenuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
   });
-  
+
   // Close the menu if clicked outside
   window.addEventListener('click', (e) => {
     if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
@@ -74,6 +88,44 @@ export default function header(){
     if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)){
       mobileMenu.classList.add('hidden');
     }
-  })
+  });
+
+  // Remove #/login link if present
+  const loginLink = el.querySelector('a[href="#/login"]');
+  if (loginLink) {
+    loginLink.remove();
+  }
+}
+else{
+  const profileBtn = el.querySelector('#profile-btn');
+  if (profileBtn) {
+    profileBtn.addEventListener('click', () => {
+      window.location.hash = '#/login';
+    });
+  }
+}
+// Sign out
+const signoutBtn = el.querySelector('#signout');
+if (signoutBtn) {
+  signoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('user_profile');
+    alert('You have been signed out.');
+    window.location.hash = '#/login';
+    window.location.reload();
+  });
+}
+
+// Highlight active link
+const currentHash = window.location.hash || '#/';
+const navLinks = el.querySelectorAll('a');
+navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentHash) {
+      link.classList.add('font-bold', 'underline', 'text-orange-400');
+    } else {
+      link.classList.remove('font-bold', 'underline', 'text-orange-400');
+    }
+  });
   return el;
 }
