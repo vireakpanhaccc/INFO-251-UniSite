@@ -72,65 +72,7 @@ export default function Opportunities() {
   const scholarshipCountSpan = el.querySelector(".scholarship-count");
   scholarshipCountSpan.textContent = scholarshipData.length;
 
-  return el;
-}
-
-function filterScholarships(
-  scholarshipData,
-  searchTerm,
-  provider,
-  universityId,
-  minAmount,
-  maxAmount,
-  deadlineAfter
-) {
-  return scholarshipData.filter((scholarship) => {
-    const matchesSearch = scholarship.name
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    const matchesProvider = provider ? scholarship.provider === provider : true;
-    const matchesUniversity = universityId 
-      ? scholarship.uni_id.includes(universityId) 
-      : true;
-    
-    // Extract amount numbers from string like "$1,000 - $5,000"
-    const amountMatch = scholarship.amount.match(/\$(\d{1,3}(?:,\d{3})*)\s*-\s*\$(\d{1,3}(?:,\d{3})*)/);
-    let matchesAmount = true;
-    if (amountMatch) {
-      const scholarshipMin = parseInt(amountMatch[1].replace(/,/g, ''), 10);
-      const scholarshipMax = parseInt(amountMatch[2].replace(/,/g, ''), 10);
-      matchesAmount = scholarshipMax >= minAmount && scholarshipMin <= maxAmount;
-    }
-    
-    const matchesDeadline = deadlineAfter
-      ? new Date(scholarship.deadline) >= new Date(deadlineAfter)
-      : true;
-    
-    return (
-      matchesSearch &&
-      matchesProvider &&
-      matchesUniversity &&
-      matchesAmount &&
-      matchesDeadline
-    );
-  });
-}
-
-function updateScholarshipGrid(scholarships) {
-  const scholarshipGrid = document.querySelector(".uni-grid");
-  scholarshipGrid.innerHTML = scholarshipCards(scholarships);
-}
-
-// Event listeners for filters
-document.addEventListener("input", () => {
-  const searchTerm = document.querySelector("#searchScholarship").value;
-  const provider = document.querySelector(".provider-filter select").value;
-  const universityId = document.querySelector(".university-filter select").value;
-  const minAmount = parseInt(document.querySelector("#minAmount").value, 10);
-  const maxAmount = parseInt(document.querySelector("#maxAmount").value, 10);
-  const deadlineAfter = document.querySelector("#deadlineAfter").value;
-
-  const filteredScholarships = filterScholarships(
+  function filterScholarships(
     scholarshipData,
     searchTerm,
     provider,
@@ -138,8 +80,66 @@ document.addEventListener("input", () => {
     minAmount,
     maxAmount,
     deadlineAfter
-  );
-  const scholarshipCountSpan = document.querySelector(".scholarship-count");
-  scholarshipCountSpan.textContent = filteredScholarships.length;
-  updateScholarshipGrid(filteredScholarships);
-});
+  ) {
+    return scholarshipData.filter((scholarship) => {
+      const matchesSearch = scholarship.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+      const matchesProvider = provider ? scholarship.provider === provider : true;
+      const matchesUniversity = universityId 
+        ? scholarship.uni_id.includes(universityId) 
+        : true;
+      
+      // Extract amount numbers from string like "$1,000 - $5,000"
+      const amountMatch = scholarship.amount.match(/\$(\d{1,3}(?:,\d{3})*)\s*-\s*\$(\d{1,3}(?:,\d{3})*)/);
+      let matchesAmount = true;
+      if (amountMatch) {
+        const scholarshipMin = parseInt(amountMatch[1].replace(/,/g, ''), 10);
+        const scholarshipMax = parseInt(amountMatch[2].replace(/,/g, ''), 10);
+        matchesAmount = scholarshipMax >= minAmount && scholarshipMin <= maxAmount;
+      }
+      
+      const matchesDeadline = deadlineAfter
+        ? new Date(scholarship.deadline) >= new Date(deadlineAfter)
+        : true;
+      
+      return (
+        matchesSearch &&
+        matchesProvider &&
+        matchesUniversity &&
+        matchesAmount &&
+        matchesDeadline
+      );
+    });
+  }
+  
+  function updateScholarshipGrid(scholarships) {
+    const scholarshipGrid = el.querySelector(".uni-grid");
+    scholarshipGrid.innerHTML = scholarshipCards(scholarships);
+  }
+  
+  // Event listeners for filters
+  el.addEventListener("input", () => {
+    const searchTerm = el.querySelector("#searchScholarship").value;
+    const provider = el.querySelector(".provider-filter select").value;
+    const universityId = el.querySelector(".university-filter select").value;
+    const minAmount = parseInt(el.querySelector("#minAmount").value, 10);
+    const maxAmount = parseInt(el.querySelector("#maxAmount").value, 10);
+    const deadlineAfter = el.querySelector("#deadlineAfter").value;
+
+    const filteredScholarships = filterScholarships(
+      scholarshipData,
+      searchTerm,
+      provider,
+      universityId,
+      minAmount,
+      maxAmount,
+      deadlineAfter
+    );
+    const scholarshipCountSpan = el.querySelector(".scholarship-count");
+    scholarshipCountSpan.textContent = filteredScholarships.length;
+    updateScholarshipGrid(filteredScholarships);
+  });
+
+  return el;
+}

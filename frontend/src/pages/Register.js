@@ -40,21 +40,22 @@ export default async function Register() {
       </div>
     </div>
   `;
+
   const form = el.querySelector("form");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
+    const name = form.elements["name"].value;
+    const email = form.elements["email"].value;
+    const password = form.elements["password"].value;
+    console.log("Registering user:", { name, email, password });
     try {
-      const response = await api.post("/auth/register");
+      const response = await api.post("/auth/register", { body: { name, email, password } });
       if (response.success) {
         alert("Registration successful! Please log in.");
         window.location.hash = "#/login"; // Redirect to login page
       } else {
         alert("Registration failed: " + (response.message || "Unknown error"));
       }
-      console.log("Response:", response);
     } catch (error) {
       alert("Registration error: " + error.message);
     }
