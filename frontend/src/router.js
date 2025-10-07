@@ -16,7 +16,7 @@ import Setting from './pages/Setting.js';
 import {api} from './api.js';
 
 const user_profile = localStorage.getItem('user_profile') ? JSON.parse(localStorage.getItem('user_profile')) : null;
-console.log(user_profile);
+
 
 function parseHash() {
   const h = location.hash || '#/';

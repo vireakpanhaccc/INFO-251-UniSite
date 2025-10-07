@@ -10,7 +10,7 @@ export default function scholarshipCards (scholarships) {
         <p>Provider: ${scholarship.provider || 'Unknown'}</p>
         <p>Amount: ${scholarship.amount || 'N/A'}</p>
         <p>Deadline: ${scholarship.deadline || 'N/A'}</p>
-        <a class="absolute bottom-4 right-4 py-1.5 px-2 bg-[#2c3e50ec] text-sm text-white rounded hover:bg-[#2c3e50] active:brightness-80" href="#/opportunities/${scholarship.id}">Visit Details</a>
+        <a class="absolute bottom-4 right-4 py-1.5 px-2 bg-[#2c3e50ec] text-sm text-white rounded hover:bg-[#2c3e50] active:brightness-80" href="#/opportunities/${scholarship.id ?? scholarship._id}">Visit Details</a>
       </div>
     </div>
   `).join('');
