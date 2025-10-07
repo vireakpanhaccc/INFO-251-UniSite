@@ -12,6 +12,7 @@ import ResetPassword from './pages/ResetPassword.js'
 import NotFound from './pages/NotFound.js';
 import header from './components/header.js';
 import footer from './components/footer.js';
+import Setting from './pages/Setting.js';
 import {api} from './api.js';
 
 const user_profile = localStorage.getItem('user_profile') ? JSON.parse(localStorage.getItem('user_profile')) : null;
@@ -52,6 +53,7 @@ export default async function router(appEl, headerEl, footerEl) {
     case 'register': view = await Register(); break;
     case 'login': view = await Login(); break;
     case 'reset-password': view = await ResetPassword(); break;
+    case 'settings': view = await Setting(); break;
     default: view = await NotFound(); break;
   }
   appEl.innerHTML = '';

@@ -46,8 +46,13 @@ async function request(method, path, { body, headers } = {}) {
         body: body ? JSON.stringify(body) : undefined,
       });
     }
+    else {
+      alert("Unauthorized. Please log in again.");
+      clearTokens();
+      window.location.hash = "#/login";
+      return null;
+    }
   }
-
   return res.json();
 }
 

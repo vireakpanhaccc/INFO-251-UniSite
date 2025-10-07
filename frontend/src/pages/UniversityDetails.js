@@ -12,11 +12,8 @@ export default async function UniversityDetails(uni_id) {
   try {
     university = await api.get(`/universities/${uni_id}`);
   } catch (err) {
-    if (err.status === 401 || err.status === 403) {
-      window.location.href = '/login';
-      return;
-    }
-    throw err;
+    console.error("Error fetching university data:", err);
+    return null;
   }
   const el = document.createElement('div');
   const scholarships = scholarshipData.filter(sch => sch.uni_id.includes(university._id));

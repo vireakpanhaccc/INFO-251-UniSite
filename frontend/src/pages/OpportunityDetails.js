@@ -5,7 +5,7 @@ import {universitiesData} from '../data/universitiesData.js';
 export default function OpportunityDetails(scholarship_id) {
   const el = document.createElement('div');
   const scholarship = scholarshipData.find(sch => sch.id === parseInt(scholarship_id));
-  const relatedUniversities = universitiesData.filter(uni => scholarship.uni_id.includes(uni.id));
+  const relatedUniversities = universitiesData.filter(uni => scholarship.uni_id.includes(uni._id));
   const relatedScholarships = scholarshipData.filter(sch => sch.id !== scholarship.id && sch.uni_id.some(id => scholarship.uni_id.includes(id)));
   
   if (!scholarship) return null;
