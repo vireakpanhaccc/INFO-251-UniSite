@@ -119,9 +119,10 @@ if (signoutBtn) {
 
 // Highlight active link
 const currentHash = window.location.hash || '#/';
+const hash = currentHash.split('/')[1] ? `#/${currentHash.split('/')[1]}` : '#/';
 const navLinks = el.querySelectorAll('a');
 navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentHash) {
+    if (link.getAttribute('href') === hash) {
       link.classList.add('font-bold', 'underline', 'text-orange-400');
     } else {
       link.classList.remove('font-bold', 'underline', 'text-orange-400');

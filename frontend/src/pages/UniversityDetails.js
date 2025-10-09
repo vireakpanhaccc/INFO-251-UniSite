@@ -12,8 +12,47 @@ export default async function UniversityDetails(uni_id) {
   try {
     university = await api.get(`/universities/${uni_id}`);
   } catch (err) {
-    console.error("Error fetching university data:", err);
-    return null;
+    // Optionally, display an error message in the UI
+    const el = document.createElement('div');
+    if(err.status === 404) {
+      el.innerHTML = `
+      <div class="flex flex-col items-center justify-center py-12 bg-yellow-50 rounded-lg shadow-md border border-yellow-200">
+        <svg class="w-14 h-14 text-yellow-500 mb-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
+        </svg>
+        <h2 class="text-2xl font-semibold text-yellow-700 mb-2">University Not Found</h2>
+        <p class="text-yellow-600 text-center mb-4">The university you are looking for does not exist or has been removed.</p>
+        <button class="mt-2 px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700 transition" onclick="window.history.back()">Back</button>
+      </div>
+      `;
+      return el;
+    }
+    else if(err.status === 401) {
+      el.innerHTML = `
+      <div class="flex flex-col items-center justify-center py-12 bg-blue-50 rounded-lg shadow-md border border-blue-200">
+        <svg class="w-14 h-14 text-blue-500 mb-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
+        </svg>
+        <h2 class="text-2xl font-semibold text-blue-700 mb-2">Unauthorized Access</h2>
+        <p class="text-blue-600 text-center mb-4">You must be logged in to view this university's details.</p>
+        <button class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition" onclick="window.location.hash='#/login'">Go to Login</button>
+      </div>
+      `;
+      return el;
+    }
+    else {
+      el.innerHTML = `
+      <div class="flex flex-col items-center justify-center py-12 bg-red-50 rounded-lg shadow-md border border-red-200">
+        <svg class="w-14 h-14 text-red-500 mb-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
+        </svg>
+        <h2 class="text-2xl font-semibold text-red-700 mb-2">Error Loading University</h2>
+        <p class="text-red-600 text-center mb-4">An error occurred while fetching the university details. Please try again later.</p>
+        <button class="mt-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition" onclick="window.history.back()">Back</button>
+      </div>
+      `;
+      return el;
+    }
   }
   const el = document.createElement('div');
   const scholarships = scholarshipData.filter(sch => sch.uni_id.includes(university._id));

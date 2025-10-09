@@ -21,21 +21,25 @@ export function clearTokens() {
 // Core request function
 async function request(method, path, { body, headers } = {}) {
   const token = getAccessToken();
-  
   let res = await fetch(`${BASE_URL}${path}`, {
     method,
     headers: {
       "Content-Type": "application/json",
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      ...(headers || {}),
-    },
-    body: body ? JSON.stringify(body) : undefined,
+    ...(headers || {}),
+  },
+  body: body ? JSON.stringify(body) : undefined,
   });
+
+  if(!res.ok) {
+    console.error("API Error:", res.status, await res.json());
+  }
 
   // If token expired, attempt to refresh and retry request
   if (res.status === 401) {
     const refreshed = await refreshAccessToken();
     if (refreshed) {
+      console.log("Attempting to refresh token...");
       res = await fetch(`${BASE_URL}${path}`, {
         method,
         headers: {
@@ -45,15 +49,14 @@ async function request(method, path, { body, headers } = {}) {
         },
         body: body ? JSON.stringify(body) : undefined,
       });
-    }
-    else {
-      alert("Unauthorized. Please log in again.");
-      clearTokens();
-      window.location.hash = "#/login";
-      return null;
+      if(res.ok) {
+        console.log("Token refreshed and request succeeded.");
+      } else {
+        console.error("Request failed even after token refresh:", res.status, await res.json());
+      }
     }
   }
-  return res.json();
+  return res.ok ? res.json() : Promise.reject(res);
 }
 
 async function refreshAccessToken() {

@@ -5,9 +5,14 @@ import { api } from "../api.js";
 
 
 export default async function Home() {
-  const universities = await api.get('/home/popular/universities');
-  const majors = await api.get('/home/popular/majors');
-  const scholarships = await api.get('/home/popular/scholarships');
+  let universities = [];
+  let majors = [];
+  let scholarships = [];
+  try {
+    universities = await api.get('/home/popular/universities');
+    majors = await api.get('/home/popular/majors');
+    scholarships = await api.get('/home/popular/scholarships');
+  } catch (error) {}
   const el = document.createElement("div");
   el.innerHTML = `
     <div class="home-cover">
