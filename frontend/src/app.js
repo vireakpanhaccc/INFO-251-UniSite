@@ -4,6 +4,7 @@ import router from './router.js'
 const appEl = document.getElementById('app');
 const headerEl = document.getElementById('header');
 const footerEl = document.getElementById('footer');
+const lang = localStorage.getItem('lang') || 'en';
 
 function render() {router(appEl, headerEl, footerEl)}
 

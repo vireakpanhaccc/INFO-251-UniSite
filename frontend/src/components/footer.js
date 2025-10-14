@@ -1,3 +1,4 @@
+import { t } from "../utils.js";
 
 export default function footer(){
   const el = document.createElement('div');
@@ -6,32 +7,32 @@ export default function footer(){
       <div class="flex flex-wrap justify-between gap-5 py-0 px-[5%]">
         <div class="min-w-50 max-w-2xl">
           <h1 class="text-xl font-bold mb-2">UniSites</h1>
-          <p>UniSites is a platform dedicated to helping students find the best universities, majors, and scholarships in Cambodia. We also provide a forum for students to connect and share their experiences.</p>
+          <p>${t("foot_desc")}</p>
           <h1 class="text-xl font-bold my-2">Contact</h1>
-          <p>Email: <a href="mailto:unisites@aupp.edu.kh">unisites@aupp.edu.kh</a></p>
-          <p>Phone: <a href="tel:+85512345678">+855 12 345 678</a></p>
-          <p>Address: <a href="https://maps.app.goo.gl/UACZ9YS73veDDU339" target="_blank">Kilometer 6, 278H, Street 201R, Kroalkor Village, Unnamed Road, Phnom Penh</a></p>
+          <p>${t("email")}: <a href="mailto:unisites@aupp.edu.kh">unisites@aupp.edu.kh</a></p>
+          <p>${t("phone")}: <a href="tel:+85512345678">012 345 678</a></p>
+          <p>${t("address")}: <a href="https://maps.app.goo.gl/UACZ9YS73veDDU339" target="_blank">${t("foot_address")}</a></p>
         </div>
         <div class="min-w-50 max-w-xl">
             <h1 class="text-xl font-bold mb-2">Policies</h1>
             <ul>
-              <li class="mb-2 active:opacity-70 "><a class="hover:underline"  href="#/">Privacy Policy</a></li>
-              <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/">Terms & Conditions</a></li>
-              <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/">Cookie Policy</a></li>
-              <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/">Disclaimer</a></li>
-              <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/">FAQs</a></li>
-              <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/">Copyright Notice</a></li>
-            </ul> 
+              <li class="mb-2 active:opacity-70 "><a class="hover:underline"  href="#/">${t("privacy_policy")}</a></li>
+              <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/"></a>${t("terms_conditions")}</li>
+              <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/"></a>${t("cookie_policy")}</li>
+              <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/"></a>${t("disclaimer")}</li>
+              <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/"></a>${t("faqs")}</li>
+              <li class="mb-2 active:opacity-70"><a class="hover:underline"  href="#/"></a>${t("copyright")}</li>
+            </ul>
         </div>
         <div class="min-w-50 max-w-xl">
             <h1 class="text-xl font-bold mb-2">Quick Links</h1>
             <ul>
-              <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/">Home</a></li>
-              <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/universities">Universities</a></li>
-              <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/majors">Majors</a></li>
-              <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/opportunities">Opportunities</a></li>
-              <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/forum">Forum</a></li>
-              <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/about">About</a></li>
+              <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/">${t("home")}</a></li>
+              <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/universities">${t("universities")}</a></li>
+              <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/majors">${t("majors")}</a></li>
+              <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/opportunities">${t("opportunities")}</a></li>
+              <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/forum">${t("forum")}</a></li>
+              <li class="mb-2 active:opacity-70"><a class="hover:underline" href="#/about">${t("about")}</a></li>
             </ul>
         </div>
         <div class="min-w-50 max-w-fit-content">
@@ -53,7 +54,7 @@ export default function footer(){
         </div>
       </div>
       <div class="text-sm text-center border-t border-gray-300 pt-3 mt-3 px-[5%]">
-        <p>© <strong><span id="year"></span></strong> UniSites. All Rights Reserved.</p>
+        <p>© <strong><span id="year"></span></strong> UniSites. ${t("all_rights_reserved")}.</p>
       </div>
     </div>
   `;

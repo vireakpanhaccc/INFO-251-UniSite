@@ -1,4 +1,4 @@
-
+import { t } from "../utils.js";
 
 export default function header(user_profile){
   const el = document.createElement('div');
@@ -10,12 +10,12 @@ export default function header(user_profile){
         </div>
         <div class="flex items-center gap-6">
           <div class="hidden md:flex gap-4">
-            <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/" id="home">Home</a>
-            <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/universities" id="universities">Universities</a>
-            <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/majors" id="majors">Majors</a>
-            <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/opportunities" id="opportunities">Opportunities</a>
-            <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/forum" id="forum">Forum</a>
-            <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/about" id="about">About</a>
+            <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/" id="home">${t('home')}</a>
+            <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/universities" id="universities">${t('universities')}</a>
+            <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/majors" id="majors">${t('majors')}</a>
+            <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/opportunities" id="opportunities">${t('opportunities')}</a>
+            <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/forum" id="forum">${t('forum')}</a>
+            <a class="text-[#2c3e50ec] hover:underline active:brightness-80 active:scale-90 " href="#/about" id="about">${t('about')}</a>
           </div>
           <div class="flex items-center gap-4">
             <div class="flex items-center justify-between gap-4 relative">
@@ -42,12 +42,12 @@ export default function header(user_profile){
       <!-- Mobile Menu-->
       <nav id="mobile-nav" class="block md:hidden">
         <div id="mobile-menu" class="hidden flex-col items-center bg-white border-t border-gray-300 w-full text-center text-md lg:text-lg shadow-md">
-          <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/" id="home">Home</a>
-          <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/universities" id="universities">Universities</a>
-          <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/majors" id="majors">Majors</a>
-          <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/opportunities" id="opportunities">Opportunities</a>
-          <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/forum" id="forum">Forum</a>
-          <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/about" id="about">About</a>
+          <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/" id="home">${t('home')}</a>
+          <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/universities" id="universities">${t('universities')}</a>
+          <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/majors" id="majors">${t('majors')}</a>
+          <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/opportunities" id="opportunities">${t('opportunities')}</a>
+          <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/forum" id="forum">${t('forum')}</a>
+          <a class="block w-full py-4 hover:bg-blue-200 active:brightness-80 border-b border-gray-300 text-[#2c3e50ec]" href="#/about" id="about">${t('about')}</a>
         </div>
       </nav>
     </div>
