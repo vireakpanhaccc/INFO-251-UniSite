@@ -1,3 +1,5 @@
+import { t } from "../utils.js";
+
 export default function scholarshipCards (scholarships) {
   return scholarships.map(scholarship =>`
     <div class="uni-card h-[500px] border border-gray-300 shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 relative max-w-[600px]">
@@ -7,10 +9,10 @@ export default function scholarshipCards (scholarships) {
       </div>
       <div class="card-content px-4">
         <h3 class="text-md font-bold">${scholarship.name || 'No Name Provided'}</h3>
-        <p>Provider: ${scholarship.provider || 'Unknown'}</p>
-        <p>Amount: ${scholarship.amount || 'N/A'}</p>
-        <p>Deadline: ${scholarship.deadline || 'N/A'}</p>
-        <a class="absolute bottom-4 right-4 py-1.5 px-2 bg-[#2c3e50ec] text-sm text-white rounded hover:bg-[#2c3e50] active:brightness-80" href="#/opportunities/${scholarship.id ?? scholarship._id}">Visit Details</a>
+        <p>${t('provider')}: ${scholarship.provider || 'Unknown'}</p>
+        <p>${t('amount')}: ${scholarship.amount || 'N/A'}</p>
+        <p>${t('deadline')}: ${scholarship.deadline || 'N/A'}</p>
+        <a class="absolute bottom-4 right-4 py-1.5 px-2 bg-[#2c3e50ec] text-sm text-white rounded hover:bg-[#2c3e50] active:brightness-80" href="#/opportunities/${scholarship.id ?? scholarship._id}">${t('visit_details')}</a>
       </div>
     </div>
   `).join('');
