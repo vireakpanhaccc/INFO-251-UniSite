@@ -1,7 +1,9 @@
+
+
 export default async function Setting() {
   const el = document.createElement('div');
   el.innerHTML = `
-    <div class="setting-page flex flex-col items-center justify-center min-h-[70vh] w-full bg-gray-50 transition-colors px-4 py-8">
+    <div class="setting-page flex flex-col items-center justify-center min-h-[70vh] w-full bg-gray-50 transition-colors px-4 py-8 bg-transparent">
       <form class="w-full max-w-4xl bg-transparent space-y-12">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div class="flex flex-col gap-8">
@@ -121,8 +123,9 @@ export default async function Setting() {
   darkModeToggle.checked = localStorage.getItem('darkMode') === 'true';
   fontSizeSelect.value = localStorage.getItem('fontSize') || 'normal';
   themeColorSelect.value = localStorage.getItem('themeColor') || 'blue';
-  emailInput.value = localStorage.getItem('email') || '';
-  usernameInput.value = localStorage.getItem('username') || '';
+  const user_profile = localStorage.getItem('user_profile') ? JSON.parse(localStorage.getItem('user_profile')) : {};
+  emailInput.value = user_profile.email || localStorage.getItem('email') || '';
+  usernameInput.value = user_profile.name || localStorage.getItem('username') || '';
   twoFactorToggle.checked = localStorage.getItem('twoFactor') === 'true';
   notificationsToggle.checked = localStorage.getItem('notifications') === 'true';
   timezoneSelect.value = localStorage.getItem('timezone') || 'local';
@@ -136,11 +139,15 @@ export default async function Setting() {
   });
   darkModeToggle.addEventListener('change', (e) => {
     localStorage.setItem('darkMode', e.target.checked);
-    document.documentElement.classList.toggle('dark', e.target.checked);
+    if(e.target.checked) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
   });
   fontSizeSelect.addEventListener('change', (e) => {
     localStorage.setItem('fontSize', e.target.value);
-    document.documentElement.style.fontSize = e.target.value === 'normal' ? '16px' : e.target.value === 'large' ? '18px' : '20px';
+    document.documentElement.style.fontSize = e.target.value === 'normal' ? '12px' : e.target.value === 'large' ? '16px' : '18px';
   });
   themeColorSelect.addEventListener('change', (e) => {
     localStorage.setItem('themeColor', e.target.value);
@@ -167,13 +174,6 @@ export default async function Setting() {
   privacySelect.addEventListener('change', (e) => {
     localStorage.setItem('privacy', e.target.value);
   });
-
-  // Apply initial dark mode and font size
-  if (darkModeToggle.checked) {
-    document.documentElement.classList.add('dark');
-  }
-  document.documentElement.style.fontSize = fontSizeSelect.value === 'normal' ? '16px' : fontSizeSelect.value === 'large' ? '18px' : '20px';
-  document.documentElement.style.setProperty('--theme-color', themeColorSelect.value);
 
   return el;
 }

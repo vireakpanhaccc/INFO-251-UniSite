@@ -5,6 +5,7 @@ import { api } from "../api.js";
 import { t } from "../utils.js";
 
 
+
 export default async function Home() {
   let universities = [];
   let majors = [];
@@ -18,15 +19,15 @@ export default async function Home() {
   // Cover images array
   const coverImages = [
     './images/pic/universities/cover/Students-Life.jpg',
+    './images/pic/universities/cover/img_ifl_doe.jpg',
+    './images/pic/universities/cover/PUC_Campus.jpg',
     './images/pic/universities/cover/rupp_excellence_scholarship.png',
-    './images/pic/universities/cover/norton-campus.jpg',
-    './images/pic/universities/cover/paragon-campus.jpg',
   ];
   let currentCover = 0;
 
   el.innerHTML = `
     <div class="home-cover relative">
-      <img id="cover-img" class="min-h-[300px] max-h-[500px] w-full object-cover transition-all duration-300" src="${coverImages[0]}">
+      <img id="cover-img" class="min-h-[300px] max-h-[600px] w-full object-cover transition-all duration-300" src="${coverImages[0]}">
       <button id="cover-prev" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 rounded-full p-2 shadow hover:bg-white">&#8592;</button>
       <button id="cover-next" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 rounded-full p-2 shadow hover:bg-white">&#8594;</button>
       <div id="cover-dots" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
@@ -116,6 +117,13 @@ export default async function Home() {
         updateDots();
       };
     });
+    const intervalId = setInterval(() => {
+      currentCover = (currentCover + 1) % coverImages.length;
+      img.src = coverImages[currentCover];
+      updateDots();
+    }, 10000);
+    setTimeout(() => clearInterval(intervalId), 40000); // Stop auto-slide after 40 seconds
+
     updateDots();
   }, 0);
 
@@ -123,19 +131,34 @@ export default async function Home() {
   setTimeout(() => {
     const input = el.querySelector('#home-search-input');
     const btn = el.querySelector('#home-search-btn');
-    btn.onclick = () => {
+    function performSearch() {
       const query = input.value.trim().toLowerCase();
-      if (!query) return;
+      if (!query) {
+        // Reset to original lists if search is empty
+        el.querySelector('#university-cards').innerHTML = universityCards(universities);
+        el.querySelector('#major-cards').innerHTML = majorCards(majors);
+        el.querySelector('#scholarship-cards').innerHTML = scholarshipCards(scholarships);
+        return;
+      }
       // Filter universities, majors, scholarships by name/title
       const filteredUniversities = universities.filter(u => u.name?.toLowerCase().includes(query));
       const filteredMajors = majors.filter(m => m.name?.toLowerCase().includes(query));
-      const filteredScholarships = scholarships.filter(s => s.title?.toLowerCase().includes(query));
+      const filteredScholarships = scholarships.filter(s => s.name?.toLowerCase().includes(query));
       el.querySelector('#university-cards').innerHTML = universityCards(filteredUniversities);
       el.querySelector('#major-cards').innerHTML = majorCards(filteredMajors);
       el.querySelector('#scholarship-cards').innerHTML = scholarshipCards(filteredScholarships);
-    };
+    }
+    btn.onclick = performSearch;
     input.onkeydown = e => {
-      if (e.key === 'Enter') btn.click();
+      performSearch();
+    };
+    input.oninput = () => {
+      if (!input.value.trim()) {
+        // Reset cards when input is cleared
+        el.querySelector('#university-cards').innerHTML = universityCards(universities);
+        el.querySelector('#major-cards').innerHTML = majorCards(majors);
+        el.querySelector('#scholarship-cards').innerHTML = scholarshipCards(scholarships);
+      }
     };
   }, 0);
   return el;
