@@ -15,6 +15,7 @@ import footer from './components/footer.js';
 import Setting from './pages/Setting.js';
 import UserProfile from './pages/UserProfile.js';
 import {api} from './api.js';
+import MajorsDetail from './pages/MajorsDetail.js';
 
 const user_profile = localStorage.getItem('user_profile') ? JSON.parse(localStorage.getItem('user_profile')) : null;
 
@@ -39,7 +40,15 @@ export default async function router(appEl, headerEl, footerEl) {
       else
         view = await Universities(); 
       break;
-    case 'majors': view = await Majors(); break;
+    case 'majors': 
+      if(id) {
+            view = await MajorsDetail(id);
+            if (!view) view = await NotFound();
+          break;
+        }
+        else
+          view = await Majors(); 
+        break;
     case 'opportunities': 
       if(id) {
           view = await OpportunityDetails(id);
