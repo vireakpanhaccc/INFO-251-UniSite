@@ -73,30 +73,30 @@ export default function UserProfile() {
 
   // Root element
   const el = document.createElement('div');
-  el.className = 'user-profile font-sans bg-gray-50 p-6 min-h-screen';
+  el.className = 'user-profile font-sans bg-gray-50 dark:bg-gray-900 p-6 min-h-screen';
 
   // Render HTML with consistent classes for querying
   el.innerHTML = `
-    <div class="max-w-5xl mx-auto">
+    <div class="max-w-5xl mx-auto dark:text-white">
 
       <!-- Top Header -->
-      <header class="bg-white rounded-xl shadow-md p-6 flex flex-col md:flex-row items-center gap-6">
+      <header class="bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-lg p-6 flex flex-col md:flex-row items-center gap-6">
         <div class="avatar w-28 h-28 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-300 flex items-center justify-center text-white text-4xl font-bold overflow-hidden" aria-hidden="true">
           ${renderAvatarHtml(user.avatar, user.name)}
         </div>
         <div class="flex-1 min-w-0">
           <div class="flex items-start justify-between gap-4">
             <div>
-              <h1 class="up-name text-2xl font-semibold text-[#2c3e50ec]">${escapeHtml(user.name)}</h1>
-              <p class="up-role text-sm text-gray-500 mt-1">${escapeHtml(user.role)} • ${escapeHtml(user.location)}</p>
-              <p class="up-email text-sm text-gray-600 mt-2">${escapeHtml(user.email)}</p>
+              <h1 class="up-name text-2xl font-semibold text-[#2c3e50ec] dark:text-white">${escapeHtml(user.name)}</h1>
+              <p class="up-role text-sm text-gray-500 dark:text-gray-300 mt-1">${escapeHtml(user.role)} • ${escapeHtml(user.location)}</p>
+              <p class="up-email text-sm text-gray-600 dark:text-gray-400 mt-2">${escapeHtml(user.email)}</p>
             </div>
             <div class="flex gap-2">
               <button class="btn-edit inline-flex items-center gap-2 bg-gray-800 text-white py-2 px-4 rounded-lg shadow-md hover:bg-gray-700">Edit</button>
               <button class="btn-message inline-flex items-center gap-2 bg-blue-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-500">Message</button>
             </div>
           </div>
-          <p class="mt-4 text-gray-700 up-bio">${escapeHtml(user.bio)}</p>
+          <p class="mt-4 text-gray-700 dark:text-gray-300 up-bio">${escapeHtml(user.bio)}</p>
         </div>
       </header>
 
@@ -104,32 +104,32 @@ export default function UserProfile() {
       <main class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
 
         <!-- Stats card -->
-        <section class="col-span-1 bg-white rounded-xl shadow-md p-6">
-          <h2 class="text-lg font-semibold text-[#2c3e50ec] mb-4">Stats</h2>
+        <section class="col-span-1 bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-lg p-6">
+          <h2 class="text-lg font-semibold text-[#2c3e50ec] dark:text-white mb-4">Stats</h2>
           <div class="grid grid-cols-3 text-center">
             <div>
-              <p class="font-bold text-xl text-gray-900">${user.posts}</p>
-              <p class="text-sm text-gray-600">Posts</p>
+              <p class="font-bold text-xl text-gray-900 dark:text-white">${user.posts}</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Posts</p>
             </div>
             <div>
-              <p class="font-bold text-xl text-gray-900">${user.followers}</p>
-              <p class="text-sm text-gray-600">Followers</p>
+              <p class="font-bold text-xl text-gray-900 dark:text-white">${user.followers}</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Followers</p>
             </div>
             <div>
-              <p class="font-bold text-xl text-gray-900">${user.following}</p>
-              <p class="text-sm text-gray-600">Following</p>
+              <p class="font-bold text-xl text-gray-900 dark:text-white">${user.following}</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Following</p>
             </div>
           </div>
 
           <div class="mt-6 text-center">
-            <a class="website-link text-sm text-blue-600 hover:underline" href="${escapeAttr(user.website)}" target="_blank" rel="noopener noreferrer">${escapeHtml(user.website)}</a>
+            <a class="website-link text-sm text-blue-600 dark:text-blue-400 hover:underline" href="${escapeAttr(user.website)}" target="_blank" rel="noopener noreferrer">${escapeHtml(user.website)}</a>
           </div>
         </section>
 
         <!-- Edit form (visible only when toggled) -->
         <section class="col-span-2">
-          <div class="edit-form bg-white rounded-xl shadow-md p-6 hidden" aria-hidden="true">
-            <h2 class="text-lg font-semibold text-[#2c3e50ec] mb-4">Edit Profile</h2>
+          <div class="edit-form bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-lg p-6 hidden" aria-hidden="true">
+            <h2 class="text-lg font-semibold text-[#2c3e50ec] dark:text-white mb-4">Edit Profile</h2>
 
             <!-- Photo controls -->
             <div class="flex items-center gap-4 mb-4">
@@ -139,34 +139,34 @@ export default function UserProfile() {
               <div class="flex flex-col gap-2">
                 <div>
                   <button type="button" class="upload-btn bg-gray-800 text-white py-1 px-3 rounded-lg">Upload Photo</button>
-                  <button type="button" class="remove-photo-btn bg-red-200 text-red-800 py-1 px-3 rounded-lg ml-2">Remove</button>
+                  <button type="button" class="remove-photo-btn bg-red-200 text-red-800 py-1 px-3 rounded-lg ml-2 dark:bg-red-700 dark:text-white">Remove</button>
                 </div>
                 <input type="file" accept="image/*" class="photo-input hidden" />
-                <p class="text-sm text-gray-500">Recommended: square image</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Recommended: square image</p>
               </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input type="text" class="name-input w-full p-3 border border-gray-300 rounded-lg" placeholder="Full name" value="${escapeAttr(user.name)}" />
-              <input type="email" class="email-input w-full p-3 border border-gray-300 rounded-lg" placeholder="Email" value="${escapeAttr(user.email)}" />
+              <input type="text" class="name-input w-full p-3 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white rounded-lg" placeholder="Full name" value="${escapeAttr(user.name)}" />
+              <input type="email" class="email-input w-full p-3 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white rounded-lg" placeholder="Email" value="${escapeAttr(user.email)}" />
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-              <input type="text" class="location-input w-full p-3 border border-gray-300 rounded-lg" placeholder="Location" value="${escapeAttr(user.location)}" />
-              <input type="url" class="website-input w-full p-3 border border-gray-300 rounded-lg" placeholder="Website" value="${escapeAttr(user.website)}" />
+              <input type="text" class="location-input w-full p-3 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white rounded-lg" placeholder="Location" value="${escapeAttr(user.location)}" />
+              <input type="url" class="website-input w-full p-3 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white rounded-lg" placeholder="Website" value="${escapeAttr(user.website)}" />
             </div>
 
-            <textarea class="bio-input w-full p-3 border border-gray-300 rounded-lg mt-4" rows="4" placeholder="Bio">${escapeHtml(user.bio)}</textarea>
+            <textarea class="bio-input w-full p-3 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white rounded-lg mt-4" rows="4" placeholder="Bio">${escapeHtml(user.bio)}</textarea>
             <div class="flex justify-end gap-3 mt-4">
-              <button class="cancel-btn bg-gray-200 text-gray-800 py-2 px-4 rounded-lg">Cancel</button>
-              <button class="save-btn bg-green-600 text-white py-2 px-4 rounded-lg">Save</button>
+              <button class="cancel-btn bg-gray-200 dark:bg-gray-700 dark:text-white text-gray-800 py-2 px-4 rounded-lg">Cancel</button>
+              <button class="save-btn bg-green-600 dark:bg-emerald-500 text-white py-2 px-4 rounded-lg">Save</button>
             </div>
           </div>
 
           <!-- Quick info / description card -->
-          <div class="mt-6 bg-white rounded-xl shadow-md p-6">
-            <h3 class="text-lg font-semibold text-[#2c3e50ec] mb-2">About</h3>
-            <p class="text-gray-700">${escapeHtml(user.bio)}</p>
+          <div class="mt-6 bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-lg p-6">
+            <h3 class="text-lg font-semibold text-[#2c3e50ec] dark:text-white mb-2">About</h3>
+            <p class="text-gray-700 dark:text-gray-300">${escapeHtml(user.bio)}</p>
           </div>
         </section>
 

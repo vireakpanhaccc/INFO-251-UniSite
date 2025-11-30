@@ -15,13 +15,13 @@ export default async function Universities() {
   const universityGrid = universityCards(universitiesData);
   const el = document.createElement("div");
   el.innerHTML = `
-    <div class="universities-container flex justify-between px-5 pt-8 w-full">
-      <div class="filter-bar pt-3 flex flex-col gap-6 w-1/4 min-w-[250px]">
-        <input class="border border-gray-300 rounded-md p-2 w-full" id="searchUni" name="searchUni" type="text" placeholder="Search universities...">
+    <div class="universities-container flex justify-between px-5 pt-8 w-full bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen">
+      <div class="filter-bar pt-3 flex flex-col gap-6 w-1/4 min-w-[250px] bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-4 rounded-lg border border-gray-200 dark:border-gray-700 mb-6">
+        <input class="border border-gray-300 dark:border-gray-600 rounded-md p-2 w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400" id="searchUni" name="searchUni" type="text" placeholder="Search universities...">
         
         <div class="location-filter grid grid-cols-2">
           <label class="font-semibold" for="locationSelect">Location:</label>
-          <select id="locationSelect" name="locationSelect" class="border border-gray-300 rounded-md p-2">
+          <select id="locationSelect" name="locationSelect" class="border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100">
             <option value="">All Locations</option>
             ${locations.map(location => `<option value="${location}">${location}</option>`).join("")}
           </select>
@@ -29,7 +29,7 @@ export default async function Universities() {
         
         <div class="type-filter grid grid-cols-2">
           <label class="font-semibold" for="typeSelect">Type:</label>
-          <select id="typeSelect" name="typeSelect" class="border border-gray-300 rounded-md p-2">
+          <select id="typeSelect" name="typeSelect" class="border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100">
             <option value="">All Types</option>
             <option value="Private">Private</option>
             <option value="Public">Public</option>
@@ -38,38 +38,38 @@ export default async function Universities() {
         
         <div class="established-filter grid grid-cols-2">
           <label class="font-semibold" for="establishedSelect">Established After:</label>
-          <input type="number" id="establishedSelect" name="establishedSelect" class="border border-gray-300 rounded-md p-2" min="1900" max="${new Date().getFullYear()}" placeholder="Year">
+          <input type="number" id="establishedSelect" name="establishedSelect" class="border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100" min="1900" max="${new Date().getFullYear()}" placeholder="Year">
         </div>
         
         <div class="ranking-filter grid grid-cols-2">
           <label class="font-semibold" for="rankingSelect">Min Ranking:</label>
-          <input type="number" id="rankingSelect" name="rankingSelect" class="border border-gray-300 rounded-md p-2" min="1" max="5" placeholder="1-5">
+          <input type="number" id="rankingSelect" name="rankingSelect" class="border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100" min="1" max="5" placeholder="1-5">
         </div>
         
         <div class="student-population-filter grid grid-cols-2">
           <label class="font-semibold" for="studentPopulationSelect">Min Students:</label>
-          <input type="number" id="studentPopulationSelect" name="studentPopulationSelect" class="border border-gray-300 rounded-md p-2" min="0" placeholder="Number">
+          <input type="number" id="studentPopulationSelect" name="studentPopulationSelect" class="border border-gray-300 dark:border-gray-600 rounded-md p-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100" min="0" placeholder="Number">
         </div>
         
         <div class="price-range grid grid-cols-2 items-baseline">
           <label class="font-semibold max-w-[110px]" for="minPrice">Min Price($): <span id="minPriceLabel">0</span></label>
-          <input type="range" id="minPrice" name="minPrice" min="0" max="20000" value="0"/>
+          <input type="range" id="minPrice" name="minPrice" min="0" max="20000" value="0" class="accent-sky-500">
         </div>
         <div class="price-range grid grid-cols-2 items-baseline">
           <label class="font-semibold max-w-[110px]" for="maxPrice">Max Price($): <span id="maxPriceLabel">10000</span></label>
-          <input type="range" id="maxPrice" name="maxPrice" min="0" max="10000" value="10000"/>
+          <input type="range" id="maxPrice" name="maxPrice" min="0" max="10000" value="10000" class="accent-sky-500">
         </div>
         
         <div class="scholarship-filter flex items-center gap-2">
-          <input type="checkbox" id="scholarshipOnly" name="scholarshipOnly" />
+          <input type="checkbox" id="scholarshipOnly" name="scholarshipOnly" class="accent-sky-500"/>
           <label class="font-semibold" for="scholarshipOnly">Scholarships Only</label>
         </div>
       </div> 
       <div class="uni-content px-5 w-full ">
         <div class="title-with-hr flex items-center gap-3 mb-6">
-          <hr class="flex-1 border-0 bg-[#2c3e50ec] h-1 rounded-sm">
-          <h2 class="min-w-[251px] text-2xl font-bold text-[#2c3e50ec]">Universities Cards(<span class="uni-count">0</span>)</h2>
-          <hr class="flex-1 border-0 bg-[#2c3e50ec] h-1 rounded-sm">
+          <hr class="flex-1 border-0 bg-[#2c3e50ec] dark:bg-sky-300 h-1 rounded-sm">
+          <h2 class="min-w-[251px] text-2xl font-bold text-[#2c3e50ec] dark:text-sky-300">Universities Cards(<span class="uni-count">0</span>)</h2>
+          <hr class="flex-1 border-0 bg-[#2c3e50ec] dark:bg-sky-300 h-1 rounded-sm">
         </div>
         <div class="university-grid h-screen overflow-y-auto pb-96"> 
           <div class="uni-grid card-container grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 mb-10">
