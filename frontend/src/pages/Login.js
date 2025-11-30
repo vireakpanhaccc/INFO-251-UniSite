@@ -54,7 +54,7 @@ export default async function Login() {
         window.location.hash = "#/"; // Redirect to home or dashboard
         window.location.reload();
       } else {
-        alert("Login failed: " + (response.message || "Unknown error"));
+        alert("Login: " + (response.message || "Unknown error"));
       }
       console.log("Response:", response);
     } catch (error) {

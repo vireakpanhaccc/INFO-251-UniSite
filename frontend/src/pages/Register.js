@@ -54,7 +54,7 @@ export default async function Register() {
         alert("Registration successful! Please log in.");
         window.location.hash = "#/login"; // Redirect to login page
       } else {
-        alert("Registration failed: " + (response.message || "Unknown error"));
+        alert("Registration: " + (response.message || "Unknown error"));
       }
     } catch (error) {
       alert("Registration error: " + error.message);

@@ -3,9 +3,9 @@
     "build": "npx @tailwindcss/cli -i ./public/styles/input.css -o ./public/styles/main.css --watch"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.13"
-  },
-  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.13",
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
     "tailwindcss": "^4.1.17"
   }
 }
