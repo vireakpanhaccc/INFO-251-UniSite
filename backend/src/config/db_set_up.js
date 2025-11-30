@@ -831,6 +831,7 @@ const majors = [
     _id: "major_105",
     name: "Information Technology",
     discripline: "STEM",
+    image: "./images/pic/majors/1_yMApqCa2hwm5WV-A-IfkKg.jpg",
     keywords: ["networks","databases","cybersecurity"],
     description: "Study of computer systems and networks.",
     last_updated: "2024-06-01"
@@ -839,6 +840,7 @@ const majors = [
     _id: "major_106",
     name: "Marketing",
     discripline: "Business",
+    image: "./images/pic/majors/Marketing-in-the-Education-Industry-1080x675.jpg",
     keywords: ["advertising","branding","digital marketing"],
     description: "Focus on market research and promotional strategies.",
     last_updated: "2024-06-01"
@@ -847,6 +849,7 @@ const majors = [
     _id: "major_107",
     name: "Mechanical Engineering",
     discripline: "Engineering",
+    image:"./images/pic/majors/media_1311320627a8ec0abd8b6bd93bba3aa930a933276.jpg",
     keywords: ["machines","thermodynamics","manufacturing"],
     description: "Design and analysis of mechanical systems.",
     last_updated: "2024-06-01"
@@ -855,6 +858,7 @@ const majors = [
     _id: "major_108",
     name: "Finance",
     discripline: "Business",
+    image: "./images/pic/majors/5_0016_apple-brainstorming-business-908288.jpg",
     keywords: ["investment","banking","financial analysis"],
     description: "Study of financial markets and investment strategies.",
     last_updated: "2024-06-01"
@@ -863,6 +867,7 @@ const majors = [
     _id: "major_109",
     name: "Electrical Engineering",
     discripline: "Engineering",
+    image:"./images/pic/majors/what-do-electrical-engineers-do.jpg",
     keywords: ["circuits","electronics","signal processing"],
     description: "Study of electrical systems and electronic devices.",
     last_updated: "2024-06-01"
@@ -871,6 +876,7 @@ const majors = [
     _id: "major_110",
     name: "Human Resource Management",
     discripline: "Business",
+    image:"./images/pic/majors/human-resource-management.png",
     keywords: ["recruitment","training","employee relations"],
     description: "Focus on managing organizational workforce.",
     last_updated: "2024-06-01"
