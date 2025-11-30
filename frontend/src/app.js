@@ -1,3 +1,4 @@
+
 import router from './router.js'
 
 // Initial render 
@@ -10,6 +11,7 @@ function render() {router(appEl, headerEl, footerEl)}
 
 window.addEventListener("hashchange", render);
 window.addEventListener("load", render);
+
 
 
 
