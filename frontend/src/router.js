@@ -16,6 +16,7 @@ import Setting from './pages/Setting.js';
 import UserProfile from './pages/UserProfile.js';
 import MajorDetails from './pages/MajorDetail.js';
 import {api} from './api.js';
+import MajorsDetail from './pages/MajorsDetail.js';
 
 const user_profile = localStorage.getItem('user_profile') ? JSON.parse(localStorage.getItem('user_profile')) : null;
 

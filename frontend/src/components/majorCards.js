@@ -5,6 +5,7 @@ export default function majorCards (majors){
     <div class="uni-card min-h-[360px] border border-gray-300 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 relative max-w-[600px]">
       <div class="card-image relative mb-3 h-44">
         <img class="card-cover w-full h-full object-cover" src="${major.image}" alt="${major.name} Cover">
+        <img class="card-cover w-full h-full object-cover" src="${major.image || ''}" alt="${major.name} Cover">
       </div>
 
       <div class="card-content px-4 pb-16">
