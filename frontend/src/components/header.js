@@ -1,7 +1,9 @@
 import { t } from "../utils.js";
 
+
 export default function header(user_profile){
   const el = document.createElement('div');
+  const user_image = user_profile.avatar ? `${escapeAttr(user_profile.avatar)}` : null;
   el.innerHTML = `
     <div class="bg-white border-b border-gray-300  fixed top-0 w-full z-[1000] shadow-md">
       <nav id="desktop-nav" class="flex items-center justify-between max-w-[1600px] mx-auto px-[5%] text-md lg:text-lg h-14">
@@ -20,9 +22,8 @@ export default function header(user_profile){
           <div class="flex items-center gap-4">
             <div class="flex items-center justify-between gap-4 relative">
               <!-- Profile Button -->
-              
               <button id="profile-btn">
-                <img src="./images/icon/user.png" alt="user_profile" class="size-8 active:brightness-80 active:scale-90 border border-gray-300 rounded-full box-shadow-sm" />
+                <img src="${user_image || './images/icon/user.png'}" alt="user_profile" class="size-8 active:brightness-80 active:scale-90 border border-gray-300 rounded-full box-shadow-sm" />
               </button>
               <!-- Dropdown Menu -->
               <div id="profile-menu" class="hidden absolute top-0 right-0 mt-12 w-48 bg-white shadow-lg rounded-md overflow-hidden border border-gray-200 text-sm">
@@ -129,4 +130,19 @@ navLinks.forEach(link => {
     }
   });
   return el;
+}
+
+
+// Utilities
+function escapeHtml(str) {
+  return String(str ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function escapeAttr(str) {
+  return escapeHtml(str).replaceAll('"', '&quot;');
 }
