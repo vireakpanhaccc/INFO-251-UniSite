@@ -1,8 +1,8 @@
 const express = require('express');
-const { getAllMajors,MajorById} = require('../controllers/MajorController');
+const { getAllMajors, getMajorDetails} = require('../controllers/MajorController');
 const majorRouter = express.Router();
 
 majorRouter.get('/', getAllMajors);
-majorRouter.get('/majors/:id', MajorById);
+majorRouter.get('/:id', getMajorDetails);
 
 module.exports = majorRouter;

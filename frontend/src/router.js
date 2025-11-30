@@ -14,6 +14,7 @@ import header from './components/header.js';
 import footer from './components/footer.js';
 import Setting from './pages/Setting.js';
 import UserProfile from './pages/UserProfile.js';
+import MajorDetails from './pages/MajorDetail.js';
 import {api} from './api.js';
 import MajorsDetail from './pages/MajorsDetail.js';
 
@@ -42,13 +43,12 @@ export default async function router(appEl, headerEl, footerEl) {
       break;
     case 'majors': 
       if(id) {
-            view = await MajorsDetail(id);
-            if (!view) view = await NotFound();
+          view = await MajorDetails(id);
+          if (!view) view = await NotFound();
           break;
-        }
-        else
-          view = await Majors(); 
-        break;
+      }
+      else
+        view = await Majors(); break;
     case 'opportunities': 
       if(id) {
           view = await OpportunityDetails(id);
