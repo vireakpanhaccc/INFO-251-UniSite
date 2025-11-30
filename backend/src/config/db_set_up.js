@@ -795,6 +795,7 @@ const majors = [
     _id: "major_101",
     name: "Computer Science",
     discripline: "STEM",
+    image: "./images/pic/majors/what-can-you-do-with-a-computer-science-degree-e1643881127644.jpg",
     keywords: ["programming","software","AI"],
     description: "Study of computers and computational systems.",
     last_updated: "2024-06-01"
@@ -803,6 +804,7 @@ const majors = [
     _id: "major_102",
     name: "Business Administration",
     discripline: "Business",
+    image: "./images/pic/majors/resize.jpeg",
     keywords: ["management","marketing","finance"],
     description: "Focus on business operations and management.",
     last_updated: "2024-06-01"
@@ -811,6 +813,7 @@ const majors = [
     _id: "major_103",
     name: "Civil Engineering",
     discripline: "Engineering",
+    image: "./images/pic/majors/Gorodenkoff-construction-1.jpg",
     keywords: ["infrastructure","construction","design"],
     description: "Design and construction of infrastructure.",
     last_updated: "2024-06-01"
@@ -819,6 +822,7 @@ const majors = [
     _id: "major_104",
     name: "Accounting",
     discripline: "Business",
+    image: "./images/pic/majors/challenges-faced-and-lessons-learned-in-the-accounting-profession.webp",
     keywords: ["finance","taxation","auditing"],
     description: "Focus on financial reporting and analysis.",
     last_updated: "2024-06-01"
