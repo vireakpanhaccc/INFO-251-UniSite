@@ -1,14 +1,51 @@
 import { programsData } from '../data/programsData.js';
 import { scholarshipData } from '../data/scholarshipData.js';
-import eventCards from '../components/eventCards.js';
 import scholarshipCards from '../components/scholarshipCards.js';
 import programCards from '../components/programCards.js';
+import universityCards from '../components/universityCards.js';
 import { api } from '../api.js';
 
 export default async function MajorDetails(major_id) {
   let major;
+  let universities = [];
   try {
     major = await api.get(`/majors/${major_id}`);
+    // fetch all universities and filter to those related to this major
+    try {
+      const allUnis = await api.get('/home/universities');
+      const uniSet = new Set();
+
+      // collect ids from major (supports universitiesID array or universities objects/ids)
+      if (Array.isArray(major.universitiesID) && major.universitiesID.length) {
+      major.universitiesID.forEach(u => u && uniSet.add(String(u)));
+      } else if (Array.isArray(major.universities) && major.universities.length) {
+      major.universities.forEach(u => {
+        if (!u) return;
+        if (typeof u === 'object') {
+        const id = u._id || u.id || u.uni_id || u.uniId || null;
+        if (id) uniSet.add(String(id));
+        } else {
+        uniSet.add(String(u));
+        }
+      });
+      }
+
+      // also include universities referenced by programs that reference this major
+      programsData.forEach(p => {
+      const related = (Array.isArray(p.majors) && p.majors.includes(major._id)) || p.major_id === major._id || p.major === major._id;
+      if (!related) return;
+      const pid = p.uni_id || p.uni || p.university_id || null;
+      if (pid) uniSet.add(String(pid));
+      });
+
+      // filter fetched universities to only those in uniSet (compare by common id fields)
+      universities = Array.isArray(allUnis) ? allUnis.filter(u => {
+      const id = u._id || u.id || u.uni_id || u.uniId || u.university_id || null;
+      return id && uniSet.has(String(id));
+      }) : [];
+    } catch (e) {
+      universities = [];
+    }
   } catch (err) {
     const el = document.createElement('div');
     if (err.status === 404) {
@@ -61,25 +98,121 @@ export default async function MajorDetails(major_id) {
     prog.major === major._id
   );
 
-  // Scholarships related to this major (support multiple possible fields)
-  const scholarships = scholarshipData.filter(sch =>
-    (Array.isArray(sch.majors) && sch.majors.includes(major._id)) ||
-    sch.major_id === major._id ||
-    (Array.isArray(sch.related_majors) && sch.related_majors.includes(major._id))
-  );
+  // Scholarships related to this major:
+  // Prefer explicit scholarshipsID on major, otherwise fallback to matching by majors in scholarship data
+  let scholarships = [];
+  if (Array.isArray(major.scholarshipsID) && major.scholarshipsID.length) {
+    const idSet = new Set(major.scholarshipsID);
+    scholarships = scholarshipData.filter(sch => idSet.has(sch.id) || idSet.has(sch._id) || idSet.has(Number(sch.id)));
+  } else {
+    scholarships = scholarshipData.filter(sch =>
+      (Array.isArray(sch.majors) && sch.majors.includes(major._id)) ||
+      sch.major_id === major._id ||
+      (Array.isArray(sch.related_majors) && sch.related_majors.includes(major._id))
+    );
+  }
 
-  // Derive list of unique universities offering the major from programs
-  const uniIds = [...new Set(programs.map(p => p.uni_id).filter(Boolean))];
+  universities = [];
+  let uniIds = [];
+  try {
+    const allUnis = await api.get('/universities');
+    const uniSet = new Set();
 
-  // Safe access helpers
-  const cover = major.images?.cover || major.image || '';
-  const icon = major.images?.icon || major.icon || '';
-  const degreeLevel = major.degree_level || major.level || 'N/A';
+    // collect ids from major (supports universitiesID array or universities objects/ids)
+    if (Array.isArray(major.universitiesID) && major.universitiesID.length) {
+      major.universitiesID.forEach(u => u && uniSet.add(String(u)));
+    } else if (Array.isArray(major.universities) && major.universities.length) {
+      major.universities.forEach(u => {
+        if (!u) return;
+        if (typeof u === 'object') {
+          const id = u._id || u.id || u.uni_id || u.uniId || null;
+          if (id) uniSet.add(String(id));
+        } else {
+          uniSet.add(String(u));
+        }
+      });
+    }
+
+  // Derive list of unique universities offering the major from major.universities / universitiesID and from programs' uni_id
+  const uniFromMajor = new Set();
+  if (Array.isArray(major.universitiesID) && major.universitiesID.length) {
+    major.universitiesID.forEach(u => u && uniFromMajor.add(u));
+  } else if (Array.isArray(major.universities) && major.universities.length) {
+    major.universities.forEach(u => u && uniFromMajor.add(u));
+  }
+
+  const uniFromPrograms = new Set(programs.map(p => p.uni_id).filter(Boolean));
+  const allUniIds = new Set([...uniFromMajor, ...uniFromPrograms]);
+  uniIds = [...allUniIds];
+
+  // Build a map of uni id -> display name when possible (try major.universities objects and program fields)
+  const uniNameMap = new Map();
+  if (Array.isArray(major.universities)) {
+    major.universities.forEach(u => {
+      if (!u) return;
+      if (typeof u === 'object') {
+        const id = u._id || u.id || u.uni_id || u.uniId || null;
+        const name = u.name || u.title || u.universityName || u.uni_name;
+        if (id) uniNameMap.set(id, name || String(id));
+        else if (u.name) uniNameMap.set(u.name, u.name);
+      } else {
+        uniNameMap.set(u, String(u));
+      }
+    });
+  }
+
+  // Use program-level names if available
+  programs.forEach(p => {
+    const id = p.uni_id || p.uni || p.university_id || null;
+    if (!id) return;
+    const name = p.uni_name || p.universityName || p.university || p.uniTitle || p.uni || null;
+    if (name) uniNameMap.set(id, name);
+    else if (!uniNameMap.has(id)) uniNameMap.set(id, String(id));
+  });
+
+  // Final list of university objects to render
+  const uniList = uniIds.map(id => ({
+    id,
+    name: uniNameMap.get(id) || String(id)
+  }));
+
+  // Use fetched university objects when available, otherwise fall back to the uniList
+  const allUniIdsStr = new Set([...allUniIds].map(String));
+  universities = Array.isArray(allUnis)
+    ? allUnis.filter(u => {
+        const id = u._id || u.id || u.uni_id || u.uniId || u.university_id || null;
+        return id && allUniIdsStr.has(String(id));
+      })
+    : uniList;
+  } catch (e) {
+    universities = [];
+  }
+
+  // Safe access helpers and adapted field names from the new structure
+  const cover = major.image || major.images?.cover || '';
+  const icon = major.icon || major.images?.icon || '';
+  const degreeLevel = Array.isArray(major.level) ? major.level.join(', ') : (major.level || major.degree_level || 'N/A');
   const duration = major.duration || 'Varies';
-  const careers = major.typical_careers?.length ? major.typical_careers.join(', ') : (major.careers || 'N/A');
-  const avgSalary = major.average_salary ? major.average_salary : 'N/A';
+  const careers = Array.isArray(major.typicalCareers) && major.typicalCareers.length
+    ? major.typicalCareers.join(', ')
+    : (Array.isArray(major.typical_careers) && major.typical_careers.length ? major.typical_careers.join(', ') : (major.careers || 'N/A'));
+  let avgSalary = 'N/A';
+  if (major.averageSalary) {
+    avgSalary = typeof major.averageSalary === 'number' ? `${major.averageSalary}` : major.averageSalary;
+  } else if (typeof major.minSalary === 'number' || typeof major.maxSalary === 'number') {
+    const min = typeof major.minSalary === 'number' ? major.minSalary : '?';
+    const max = typeof major.maxSalary === 'number' ? major.maxSalary : '?';
+    avgSalary = `${min} - ${max}`;
+  }
   const overview = major.description || major.overview || 'No overview available.';
-  const requiredCourses = (major.required_courses && major.required_courses.length) ? major.required_courses.join(', ') : (major.prerequisites && major.prerequisites.length ? major.prerequisites.join(', ') : 'N/A');
+  const requiredCourses = Array.isArray(major.requirements) && major.requirements.length
+    ? major.requirements.join(', ')
+    : (Array.isArray(major.required_courses) && major.required_courses.length ? major.required_courses.join(', ') : (major.prerequisites && major.prerequisites.length ? major.prerequisites.join(', ') : 'N/A'));
+
+  // Additional optional data
+  const discipline = major.discipline || major.field || 'N/A';
+  const minDemand = major.minDemand || major.demand || 'N/A';
+  const keywords = Array.isArray(major.keywords) ? major.keywords.join(', ') : (major.tags || 'N/A');
 
   el.innerHTML = `
     <div class="major-page flex flex-col gap-4 bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-200">
@@ -91,6 +224,7 @@ export default async function MajorDetails(major_id) {
           <div>
             <h1 class=" xs:text-xl sm:text-2xl md:text-4xl font-bold">${major.name}</h1>
             <p class="text-md md:text-lg mt-2 text-white/90">${degreeLevel} • ${duration}</p>
+            <p class="text-sm text-white/80 mt-1">${discipline} • Demand: ${minDemand}</p>
           </div>
         </div>
       </section>
@@ -103,18 +237,20 @@ export default async function MajorDetails(major_id) {
             <p class="mb-2">${overview}</p>
             <p class="mb-2"><strong>Typical Careers:</strong> ${careers}</p>
             <p class="mb-2"><strong>Average Salary:</strong> ${avgSalary}</p>
+            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><strong>Keywords:</strong> ${keywords}</p>
           </div>
 
           <div>
-            <p class="mb-2"><strong>Required Courses / Prerequisites:</strong> ${requiredCourses}</p>
-            <p class="mb-2"><strong>Degree Level:</strong> ${degreeLevel}</p>
+            <p class="mb-2"><strong>Requirements:</strong> ${requiredCourses}</p>
+            <p class="mb-2"><strong>Degree Level(s):</strong> ${degreeLevel}</p>
             <p class="mb-2"><strong>Typical Duration:</strong> ${duration}</p>
           </div>
 
           <div>
             <p class="mb-2"><strong>Universities Offering This Major:</strong> ${uniIds.length > 0 ? `${uniIds.length} found` : 'None listed'}</p>
-            ${uniIds.length > 0 ? `<p class="text-sm text-gray-500 dark:text-gray-400">Click a program below to see the university offering it.</p>` : ''}
+            ${uniIds.length > 0 ? `<p class="text-sm text-gray-500 dark:text-gray-400">Click a university below for details.</p>` : ''}
             <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">Last Updated: ${major.last_updated || 'N/A'}</p>
+            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">Scholarships Listed: ${scholarships.length}</p>
           </div>
         </div>
       </section>
@@ -135,13 +271,11 @@ export default async function MajorDetails(major_id) {
         </div>
       </section>
 
-      <!-- Events Section -->
-      <section class="px-4 md:px-8 lg:px-16 pt-6 pb-10 bg-[#9f6a08] dark:bg-[#7a4f06]">
-        <h2 class=" text-white text-center text-3xl font-semibold mb-4">Upcoming Events & Workshops</h2>
-        <div class="flex flex-wrap items-center gap-6 w-full justify-center">
-            ${eventCards(major.events || [])}
-        </div>
-      </section>
+      <!-- Related Universities Section (replaces Events) -->
+      <div class="uni-grid card-container grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6 mb-10 px-4 md:px-8 lg:px-16">
+        <h2 class="col-span-full text-center text-3xl font-semibold mb-4">Universities Offering This Major</h2>
+        ${universityCards(universities)}
+      </div>
     </div>
   `;
 
