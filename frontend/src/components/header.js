@@ -3,7 +3,7 @@ import { t } from "../utils.js";
 
 export default function header(user_profile){
   const el = document.createElement('div');
-  const user_image = user_profile.avatar ? `${escapeAttr(user_profile.avatar)}` : null;
+  const user_image = user_profile?.avatar ? escapeAttr(user_profile.avatar) : null;
   el.innerHTML = `
     <div class="bg-white border-b border-gray-300 dark:bg-gray-800 dark:border-gray-700 fixed top-0 w-full z-[1000] shadow-md">
       <nav id="desktop-nav" class="flex items-center justify-between max-w-[1600px] mx-auto px-[5%] text-md lg:text-lg h-14">
